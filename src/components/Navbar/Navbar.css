@@ -1,0 +1,8 @@
+.color-nav{
+    background-color: red;
+}
+
+.container1{
+    display: flex;
+    justify-content: space-around;
+}
