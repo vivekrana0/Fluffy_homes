@@ -8,14 +8,14 @@ import './Navbar.css'
 export default function NavbarComponent() {
     return (
         <>
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg="light" variant="light">
             <Container >
-              <Navbar.Brand href="#home">Rental Bravo</Navbar.Brand>
+              <Navbar.Brand id='brand' href="/">Rental Bravo</Navbar.Brand>
               <Nav>
-                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="#listings">My Listings</Nav.Link>
                 <Nav.Link href="#add">List A Rental</Nav.Link>
-                <Nav.Link href="#singin">Sign in</Nav.Link>
+                <Nav.Link href="/user/register">Sign in</Nav.Link>
               </Nav>
             </Container>
           </Navbar>
