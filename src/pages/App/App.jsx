@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Authpage from '../AuthPage/AuthPage';
 import { Routes, Route } from 'react-router-dom'
 import Home from '../Home/Home';
+import AddListing from '../AddListing/AddListing';
+import UpdateListing from '../UpdateListing/UpdateListing';
 
 export default function App () {
   const [user, setUser] = useState(null)
@@ -27,6 +29,8 @@ export default function App () {
        <Routes>
           <Route path='' element={<Home user={user} setUser={setUser} />} />
           <Route path='/user/register' element={<Authpage setUser={setUser} />} />
+          <Route path='/user/addlisting' element={<AddListing />} />
+          <Route path='/user/updatelisting' element={<UpdateListing />} />
         </Routes>
       
       </main>
