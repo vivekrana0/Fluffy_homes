@@ -5,7 +5,11 @@ import './Navbar.css'
 
 
 
-export default function NavbarComponent() {
+export default function NavbarComponent({user, setUser}) {
+    function handleLogout() {
+      localStorage.removeItem('token')
+      setUser(null)
+    }
     return (
         <>
           <Navbar bg="light" variant="light">
@@ -15,7 +19,11 @@ export default function NavbarComponent() {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="#listings">My Listings</Nav.Link>
                 <Nav.Link href="#add">List A Rental</Nav.Link>
+                {user ? 
+                <Nav.Link href="" onClick={handleLogout}>Log Out</Nav.Link>
+                :
                 <Nav.Link href="/user/register">Sign in</Nav.Link>
+                }
               </Nav>
             </Container>
           </Navbar>

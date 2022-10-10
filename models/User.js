@@ -42,7 +42,13 @@ var userSchema = new mongoose.Schema(
         favProperty: [propertySchema],
     },
     {
-        timestamps: true
+        timestamps: true,
+        toJSON: {
+          transform: function(doc, ret) {
+            delete ret.password
+            return ret
+          }
+        }
     }
 )
 

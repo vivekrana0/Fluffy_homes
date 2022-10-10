@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function SignUpForm() {
+export default function SignUpForm({setUser}) {
+    const nav = useNavigate()
     const [credentials, setCredentials] = useState({
         name : '',
         email: '',
@@ -15,8 +17,31 @@ export default function SignUpForm() {
         setError('')
     }
 
-    function handleSubmit() {
-        return
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      try {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: credentials.name,
+            email: credentials.email,
+            password: credentials.password
+          })
+        }
+        const fetchResponse = await fetch('/api/users/signup', options)
+
+        if(!fetchResponse.ok) throw new Error("Bad request")
+
+        let token = await fetchResponse.json()
+        localStorage.setItem('token', token)
+
+        const user = JSON.parse(atob(token.split('.')[1])).user
+        setUser(user)
+        nav('/')
+      } catch(err) {
+
+      }
     }
 
     const disable = credentials.password !== credentials.confirm ? 'disabled' : ''
