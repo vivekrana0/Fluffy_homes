@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from '../Home/Home';
 import AddListing from '../AddListing/AddListing';
 import UpdateListing from '../UpdateListing/UpdateListing';
+import Footer from "../../components/Footer/Footer";
 
 export default function App () {
   const [user, setUser] = useState(null)
@@ -32,8 +33,11 @@ export default function App () {
           <Route path='/user/addlisting' element={<AddListing />} />
           <Route path='/user/updatelisting' element={<UpdateListing />} />
         </Routes>
+        <Footer />
       
       </main>
     )
 }
+
+
 

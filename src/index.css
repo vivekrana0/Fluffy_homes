@@ -84,3 +84,15 @@ input:focus {
 .welcome{
   margin-top: 30px;
 }
+
+.footer{
+  margin-top: 0.1rem;
+  padding: 0.1rem;
+  background-color: rgb(245, 27, 245);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  justify-content: space-between;
+}
