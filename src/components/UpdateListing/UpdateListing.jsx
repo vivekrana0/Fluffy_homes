@@ -9,6 +9,11 @@ export default function UpdateListingComponent() {
           <Form.Label column="lg" lg={2}>Street Address</Form.Label>
           <Form.Control size="lg" type="text" placeholder="Street Address"></Form.Control>
         </Form.Group>
+
+        <Form.Group className="mb-3">
+            <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
+            <Form.Control size="lg" type="date"></Form.Control>
+        </Form.Group>
   
         <Form.Group className="mb-3">
           <Form.Label column="lg" lg={2}>Number of Bedrooms</Form.Label>

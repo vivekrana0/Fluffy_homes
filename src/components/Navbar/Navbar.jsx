@@ -20,6 +20,7 @@ export default function NavbarComponent({user, setUser}) {
                 <Nav.Link href="#listings">My Listings</Nav.Link>
                 <Nav.Link href="/user/addlisting">List A Rental</Nav.Link>
                 <Nav.Link href="/user/updatelisting">Update Rental</Nav.Link>
+                <Nav.Link href="/user/listingdetail">Detail</Nav.Link>
                 {user ? 
                 <Nav.Link href="" onClick={handleLogout}>Log Out</Nav.Link>
                 :
