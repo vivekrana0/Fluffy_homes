@@ -6,11 +6,8 @@ import { Routes, Route } from 'react-router-dom'
 import Home from '../Home/Home';
 import AddListing from '../AddListing/AddListing';
 import UpdateListing from '../UpdateListing/UpdateListing';
-<<<<<<< HEAD
 import Footer from "../../components/Footer/Footer";
-=======
 import Detail from '../Detail/Detail'
->>>>>>> b395df0144cd72f391dbbb506cfcd13b241b8743
 
 export default function App () {
   const [user, setUser] = useState(null)
