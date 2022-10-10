@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function LoginForm() {
+
+export default function LoginForm(props) {
+    const nav = useNavigate()
     const [credentials, setCredentials] = useState({
         email: '',
         password: '',
-        error: ''
     })
     const [error, setError] = useState('')
 
@@ -13,8 +15,31 @@ export default function LoginForm() {
         setError('')
     }
 
-    function handleSubmit() {
-        return
+    async function handleSubmit(e) {
+      e.preventDefault()
+      try {
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: credentials.email,
+            password: credentials.password
+          })
+        }
+        const fetchResponse = await fetch('/api/users/login', options)
+
+        if (!fetchResponse.ok) throw new Error('Bad Request while login')
+        let token = await fetchResponse.json()
+        localStorage.setItem('token', token)
+
+        const user = JSON.parse(atob(token.split('.')[1])).user
+        props.setUser(user)
+        nav('/')
+
+      } catch(err) {
+        console.log('signupform error', err)
+        setError("Signup failed, try again")
+      }
     }
 
 
