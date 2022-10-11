@@ -56,6 +56,11 @@ export default function AddListingComponent() {
       </Form.Group>
 
       <Form.Group className="mb-3">
+        <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
+        <Form.Control size="lg" type="date"></Form.Control>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Number of Bedrooms</Form.Label>
         <Form.Control size="lg" name="bedrooms" value={propertyData.bedrooms} type="number" placeholder="Bedrooms" onChange={handleChange}></Form.Control>
       </Form.Group>
