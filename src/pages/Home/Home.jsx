@@ -1,7 +1,7 @@
 import { Component } from "react";
 import NavbarComponent from "../../components/Navbar/Navbar"
 import Card from 'react-bootstrap/Card';
-
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
@@ -10,19 +10,17 @@ export default function Home({user, setUser}) {
         <div>
             <NavbarComponent user={user} setUser={setUser}/>
             <br></br>
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                     Sort
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="/user/listingdetail">sort</a></li>
-                    <li><a href="/user/listingdetail">sort</a></li>
-                    <li><a href="/user/listingdetail">Sort</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/user/listingdetail">Separated link</a></li>
-                </ul>
-            </div>
+            <Dropdown>
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    Sort By
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu variant="dark">
+                    <Dropdown.Item href="#/action-1">Price low to High</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Price High to Low</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">sort</Dropdown.Item>
+                </Dropdown.Menu>
+             </Dropdown>
         <br></br>
         <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
 
