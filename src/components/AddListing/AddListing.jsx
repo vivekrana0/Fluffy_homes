@@ -1,14 +1,16 @@
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import AddressField from "./Address";
 
 export default function AddListingComponent() {
   return (
     <Form>
-      <Form.Group className="mb-3">
+      {/* <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Street Address</Form.Label>
         <Form.Control size="lg" type="text" placeholder="Street Address"></Form.Control>
-      </Form.Group>
+      </Form.Group> */}
+      <AddressField />
 
       <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
