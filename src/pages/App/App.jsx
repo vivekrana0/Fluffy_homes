@@ -29,7 +29,7 @@ export default function App () {
        <Routes>
           <Route path='' element={<Home user={user} setUser={setUser} />} />
           <Route path='/user/register' element={<Authpage setUser={setUser} />} />
-          <Route path='/user/addlisting' element={<AddListing />} />
+          <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser}/>} />
           <Route path='/user/updatelisting' element={<UpdateListing />} />
         </Routes>
       
