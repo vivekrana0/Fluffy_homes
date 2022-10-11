@@ -8,6 +8,7 @@ export default function AddListingComponent() {
 
   const [propertyData, setPropertyData] = useState({
     address : '',
+    moveInDate: '',
     bedrooms: 0,
     bathrooms: 0,
     parking: 0,
@@ -30,6 +31,7 @@ export default function AddListingComponent() {
         headers: { "Content-Type": "application/json", 'Authorization': 'Bearer' + jwt },
         body: JSON.stringify({
             address : propertyData.address,
+            moveInDate: propertyData.moveInDate,
             bedrooms: propertyData.bedrooms,
             bathrooms: propertyData.bathrooms,
             parking: propertyData.parking,
@@ -59,7 +61,7 @@ export default function AddListingComponent() {
 
       <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
-        <Form.Control size="lg" type="date"></Form.Control>
+        <Form.Control size="lg" name='moveInDate' value={propertyData.moveInDate} type="date" onChange={handleChange} ></Form.Control>
       </Form.Group>
 
       <Form.Group className="mb-3">
