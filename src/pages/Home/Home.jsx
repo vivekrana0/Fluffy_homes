@@ -1,9 +1,6 @@
-import { Component } from "react";
+// import { Component } from "react";
 import NavbarComponent from "../../components/Navbar/Navbar"
 import Card from 'react-bootstrap/Card';
-
-
-
 
 export default function Home({user, setUser}) {
     return (
@@ -26,7 +23,6 @@ export default function Home({user, setUser}) {
         <br></br>
         <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
 
-            
             <Card style={{ height:'30rem', width: '18rem' }}>
                 <a href="/user/listingdetail">
                 <Card.Img variant="top" src="https://img.freepik.com/free-vector/house-rent-sale-cartoon-illustration_138676-2057.jpg?w=2000" height="255px"/>
