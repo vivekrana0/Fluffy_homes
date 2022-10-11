@@ -17,8 +17,6 @@ export default function AddListingComponent() {
   })
 
   function handleChange(e) {
-    console.log(e.target.name)
-    console.log(e.target.value)
     setPropertyData({ ...propertyData, [e.target.name]: e.target.value});
   };
 
@@ -52,12 +50,12 @@ export default function AddListingComponent() {
 
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       {/* <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Street Address</Form.Label>
         <Form.Control size="lg" type="text" placeholder="Street Address"></Form.Control>
       </Form.Group> */}
-      <AddressField />
+      <AddressField  handleChange={handleChange} propertyData={propertyData}/>
 
       <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
