@@ -1,5 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -9,7 +10,6 @@ import './AddListing.css';
 export default function AddListingComponent() {
 
   const address = useInput("")
-
 
   const [propertyData, setPropertyData] = useState({
     address : '',
@@ -21,16 +21,16 @@ export default function AddListingComponent() {
     furnish: false,
   })
 
-  const [file, setFile] = useState([])
+  const [file, setFile] = useState('')
+
+  const navigate = useNavigate()
 
   function handleChange(e) {
-    console.log(e.target.name)
-    console.log(e.target.value)
     setPropertyData({ ...propertyData, [e.target.name]: e.target.value});
   };
 
   function handleFileChange(e) {
-    setFile([...e.target.files])
+    setFile(e.target.files)
     console.log(file)
   }
 
@@ -39,7 +39,11 @@ export default function AddListingComponent() {
     try {
       let jwt = localStorage.getItem('token')
       const formData = new FormData()
-      formData.append('image', file)
+
+      for (const key in Object.keys(file)){
+        formData.append('image', file[key])
+      }
+
       for (const name in propertyData){
         formData.append(name, propertyData[name])
       }
@@ -53,6 +57,8 @@ export default function AddListingComponent() {
       let response = await fetchResponse.json()
 
       console.log('Success: ' , response)
+
+      navigate('/')
 
     } catch(err) {
       console.log('error', err)
@@ -136,12 +142,13 @@ export default function AddListingComponent() {
       
       <Form.Group controlId="formFile" className="mb-3" >
         <Form.Label>Upload Images</Form.Label>
-        <Form.Control onChange={handleFileChange} type="file" multiple accept="image/*"/>
+        <Form.Control onChange={handleFileChange} name='file' type="file" multiple accept="image/*"/>
       </Form.Group>
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
+
     </Form>
     </div>
     </div>
