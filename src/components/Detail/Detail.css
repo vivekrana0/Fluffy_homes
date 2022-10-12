@@ -1,5 +1,9 @@
-
-.DetailCard {
+.DetailCard{
+    height: 100%;
+    width: 100%;
+    border:4px ridge rgb(132, 132, 254);
+}
+.DetailImage {
     height: 100%;
     width: 100%;
     display: flex;
