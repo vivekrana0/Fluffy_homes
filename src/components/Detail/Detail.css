@@ -1,7 +1,8 @@
 .DetailCard{
     height: 100%;
     width: 100%;
-    border:4px ridge rgb(132, 132, 254);
+    border:4px ridge rgb(171, 171, 249);
+
 }
 .DetailImage {
     height: 100%;
