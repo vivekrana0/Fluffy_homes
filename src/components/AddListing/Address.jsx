@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import useInput from "../services/Address";
 // import { useState } from "react";
 
-export default function AddressField({handleChange, propertyData}) {
+export default function AddressField() {
   const address = useInput("")
 
   return (
@@ -13,10 +13,8 @@ export default function AddressField({handleChange, propertyData}) {
       <Form.Control
         size="lg"
         type="text"
-        name='address'
         placeholder="Street Address"
-        value={propertyData.address}
-        onChange={handleChange}
+        {...address}
       ></Form.Control>
       {address.suggestions?.length > 0 && (
         <div>{address.suggestions.map((suggestion, index) => {
