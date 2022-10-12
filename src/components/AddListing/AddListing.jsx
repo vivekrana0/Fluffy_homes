@@ -1,10 +1,15 @@
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import AddressField from "./Address";
+import useInput from "../services/Address";
+import './AddListing.css';
 
 export default function AddListingComponent() {
+
+  const address = useInput("")
+
 
   const [propertyData, setPropertyData] = useState({
     address : '',
@@ -13,29 +18,35 @@ export default function AddListingComponent() {
     bathrooms: 0,
     parking: 0,
     utility: false,
-    furnish: false
+    furnish: false,
   })
 
+  const [file, setFile] = useState([])
+
   function handleChange(e) {
+    console.log(e.target.name)
+    console.log(e.target.value)
     setPropertyData({ ...propertyData, [e.target.name]: e.target.value});
   };
+
+  function handleFileChange(e) {
+    setFile([...e.target.files])
+    console.log(file)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
     try {
       let jwt = localStorage.getItem('token')
+      const formData = new FormData()
+      formData.append('image', file)
+      for (const name in propertyData){
+        formData.append(name, propertyData[name])
+      }
       const options = {
         method: "POST",
-        headers: { "Content-Type": "application/json", 'Authorization': 'Bearer' + jwt },
-        body: JSON.stringify({
-            address : propertyData.address,
-            moveInDate: propertyData.moveInDate,
-            bedrooms: propertyData.bedrooms,
-            bathrooms: propertyData.bathrooms,
-            parking: propertyData.parking,
-            utility: propertyData.utility,
-            furnish: propertyData.furnish
-        })
+        headers: { 'Authorization': 'Bearer' + jwt },
+        body: formData
       }
       const fetchResponse = await fetch('/api/property/create', options)
 
@@ -50,12 +61,30 @@ export default function AddListingComponent() {
 
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {/* <Form.Group className="mb-3">
-        <Form.Label column="lg" lg={2}>Street Address</Form.Label>
-        <Form.Control size="lg" type="text" placeholder="Street Address"></Form.Control>
-      </Form.Group> */}
-      <AddressField />
+<div>
+<div className="RentalHeader" >
+  <h1>Add Rental Listing</h1>
+  <div className="AddListingForm">
+    <Form onSubmit={handleSubmit} >
+    <Form.Group className="mb-3">
+      <Form.Label column="lg" lg={2}>
+        Street Address
+      </Form.Label>
+      <Form.Control
+        size="lg"
+        type="text"
+        {...address}
+      ></Form.Control>
+      {address.suggestions?.length > 0 && (
+        <div>{address.suggestions.map((suggestion, index) => {
+            return <p key={index} onClick={() => {
+                address.setValue(suggestion.place_name)
+                propertyData.address = suggestion.place_name
+                address.setSuggestions([])
+            }}>{suggestion.place_name}</p>
+        })}</div>
+      )}
+    </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
@@ -100,9 +129,19 @@ export default function AddListingComponent() {
         </Col>
       </Row>
 
+      <Form.Group controlId="formFile" className="mb-3" >
+        <Form.Label>Upload Images</Form.Label>
+        <Form.Control onChange={handleFileChange} type="file" multiple accept="image/*"/>
+      </Form.Group>
+
       <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
+    </div>
+    </div>
+    </div>
   );
+  
 }
+

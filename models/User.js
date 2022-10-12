@@ -11,7 +11,7 @@ var propertySchema = new mongoose.Schema(
     furnish: Boolean,
     parking: Number,
     rent: Number,
-    image: String,
+    image: [],
   },
   {
     timestamps: true,

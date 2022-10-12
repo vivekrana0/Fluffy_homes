@@ -15,8 +15,6 @@ export default function AddressField() {
         type="text"
         placeholder="Street Address"
         {...address}
-        // value={address.value}
-        // onChange={address.handleChange}
       ></Form.Control>
       {address.suggestions?.length > 0 && (
         <div>{address.suggestions.map((suggestion, index) => {
