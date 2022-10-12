@@ -4,7 +4,7 @@ import { useState } from "react";
 // console.log(access_token);
 
 const useInput = (incomingValue) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(incomingValue);
   const [suggestions, setSuggestions] = useState([]);
   
   const handleChange = async (event) => {
