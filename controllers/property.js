@@ -2,8 +2,6 @@ const aws = require('aws-sdk')
 const User = require('../models/User')
 const crypto = require('crypto')
 
-
-
 const bucketName = process.env.BUCKET
 const bucketRegion = process.env.BUCKET_REGION 
 const accessKey= process.env.ACCESS_KEY
@@ -23,7 +21,36 @@ const s3 = new aws.S3({
 })
 
 module.exports = {
+    index,
     create,
+}
+
+// Get All Properties
+async function index(req, res) {
+    // let properties = await User.find({listProperty})
+    // console.log("Index To Get All Property: ", properties)
+    // try{
+    //     let properties = await User.find({listProperty})
+    //     console.log("Index To Get All Property: ", properties)
+    //     res.status(200).json(properties)
+    // } catch(error) {
+    //     console.log("Inside index() > catch Block")
+    //     res.status(400).json(error)
+    // }
+    try {
+        let properties = []
+        let users = await User.find({})
+        users.forEach(user => {
+            user.listProperty.forEach(property => {
+                properties.push(property) 
+            })
+        })
+        console.log("All Properties: ", properties)
+        res.status(200).json(properties)
+    } catch (error) {
+        console.log("Inside index() > catch Block")
+        res.status(400).json(error)
+    }
 }
 
 

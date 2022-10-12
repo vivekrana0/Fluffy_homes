@@ -10,7 +10,6 @@ export default function AddListingComponent() {
 
   const address = useInput("")
 
-
   const [propertyData, setPropertyData] = useState({
     address : '',
     moveInDate: '',
