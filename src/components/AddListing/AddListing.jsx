@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import AddressField from "./Address";
+import './AddListing.css';
 
 export default function AddListingComponent() {
 
@@ -50,6 +51,10 @@ export default function AddListingComponent() {
 
 
   return (
+<div>
+<div className="RentalHeader" >
+  <h1>Add Rental Listing</h1>
+  <div className="AddListingForm">
     <Form onSubmit={handleSubmit}>
       {/* <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Street Address</Form.Label>
@@ -104,5 +109,10 @@ export default function AddListingComponent() {
         Submit
       </Button>
     </Form>
+    </div>
+    </div>
+    </div>
   );
+  
 }
+
