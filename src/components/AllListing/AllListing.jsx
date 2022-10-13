@@ -3,6 +3,8 @@ import { useState } from "react";
 // import DetailComponent from "../Detail/Detail";
 import DropdownComponent from "../DropDown/DropDown";
 import ListingCardComponent from "../ListingCard/ListingCard";
+import {Col, Row} from 'react-bootstrap'
+import "./AllListing.css"
 
 export default function AllListingComponent({properties, setProperties}) {
   const [show, setShow] = useState(false);
@@ -52,6 +54,13 @@ export default function AllListingComponent({properties, setProperties}) {
       :
       <h4>No favorite listings</h4>
         }
+      <Row style={{  width: '100%', marginLeft: 10}}>
+        {properties.map(property => 
+          <Col md={3} style={{ marginTop: 10 }}>
+            <ListingCardComponent handleShow={handleShow} property={property} handleClose={handleClose} show={show}/>
+          </Col>
+        )}
+      </Row>
       {/* <DetailComponent handleClose={handleClose} show={show} /> */}
     </div>
   );

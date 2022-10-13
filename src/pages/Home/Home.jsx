@@ -13,6 +13,7 @@ export default function Home({user, setUser}) {
 
     function handleChange(e) {
         setSearch(e.target.value)
+        console.log(search)
     }
 
     const handleSubmit = async (e) => {
@@ -26,6 +27,7 @@ export default function Home({user, setUser}) {
         }
         const fetchResponse = await fetch('/api/property/search', options)
         const response = await fetchResponse.json()
+        console.log("Response of Search: ", response)
         if(response.length){
             setProperties(response)
             setError('')
