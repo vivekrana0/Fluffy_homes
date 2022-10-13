@@ -1,3 +1,4 @@
+
 // import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -57,33 +58,6 @@ export default function NavbarComponent({user, setUser}) {
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-  
 
-
-
-
-
-
-
-        // <>
-        //   <Navbar bg="light" variant="light">
-        //     <Container >
-        //       <Navbar.Brand id='brand' href="/">Rental Bravo</Navbar.Brand>
-        //       <Nav>
-        //         <Nav.Link href="/">Home</Nav.Link>
-        //         {user && 
-        //         <Nav.Link href="#listings">My Listings</Nav.Link>
-        //         }
-        //         <Nav.Link href="/user/addlisting">List A Rental</Nav.Link>
-        //         <Nav.Link href="/user/updatelisting">Update Rental</Nav.Link>
-        //         {user ? 
-        //         <Nav.Link href="" onClick={handleLogout}>Log Out</Nav.Link>
-        //         :
-        //         <Nav.Link href="/user/register">Sign in</Nav.Link>
-        //         }
-        //       </Nav>
-        //     </Container>
-        //   </Navbar>
-        // </>
       );
-}
+

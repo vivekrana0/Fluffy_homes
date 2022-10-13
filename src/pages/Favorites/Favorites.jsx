@@ -1,13 +1,12 @@
 import NavbarComponent from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import FavoriteListings from "../../components/FavoritesListing/Favorites";
 import { Navigate } from "react-router-dom";
 
-export default function Favorite({user, setUser}) {
-
-    
+export default function Favorite({ user, setUser }) {
+  const [properties, setProperties] = useState([]);
 
     const [properties, setProperties] = useState([])
 
@@ -27,9 +26,11 @@ export default function Favorite({user, setUser}) {
         } catch(err) {
             console.log("Error: ", err)
         }
+
     }
-    fetchData()
-    }, [])
+    fetchData();
+  }, []);
+
 
     
     if(!user){
@@ -46,3 +47,4 @@ export default function Favorite({user, setUser}) {
         </>
     )
 }
+

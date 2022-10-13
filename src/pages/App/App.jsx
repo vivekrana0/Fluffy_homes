@@ -1,36 +1,39 @@
-import { useState, useEffect } from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Authpage from '../AuthPage/AuthPage';
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from '../Home/Home';
-import AddListing from '../AddListing/AddListing';
-import UpdateListing from '../UpdateListing/UpdateListing';
+
+import { useState, useEffect } from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Authpage from "../AuthPage/AuthPage";
+import { Routes, Route } from "react-router-dom";
+import Home from "../Home/Home";
+import AddListing from "../AddListing/AddListing";
+import UpdateListing from "../UpdateListing/UpdateListing";
 import Footer from "../../components/Footer/Footer";
-import Detail from '../Detail/Detail'
-import Favorite from '../Favorites/Favorites';
-import MyListingComponent from '../MyListing/MyListing';
-import PrivateRoutes from '../../utilities/PrivateRoutes';
+import Detail from "../Detail/Detail";
+import Favorite from "../Favorites/Favorites";
+import MyListingComponent from "../MyListing/MyListing";
 
-export default function App () {
-  const [user, setUser] = useState(null)
 
+export default function App() {
+  const [user, setUser] = useState(null);
+
+  // useEffect() to mount all the data when app loads
   useEffect(() => {
-    let token = localStorage.getItem('token')
-    if(token){
-      const payload = JSON.parse(atob(token.split('.')[1]))
-      if(payload.exp < Date.now() / 1000){
-        localStorage.removeItem('token')
-        return setUser(null)
-      }else{
-        let user = payload.user
-        setUser(user)
+    let token = localStorage.getItem("token");
+    if (token) {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      if (payload.exp < Date.now() / 1000) {
+        localStorage.removeItem("token");
+        return setUser(null);
+      } else {
+        let user = payload.user;
+        setUser(user);
       }
     }
-  }, [])
+  }, []);
 
 
   return (
+
         
       <main className="App">
        <Routes>
@@ -55,7 +58,5 @@ export default function App () {
       
       </main>
     )
+
 }
-
-
-
