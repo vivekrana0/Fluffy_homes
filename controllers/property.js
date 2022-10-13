@@ -83,6 +83,7 @@ async function search(req, res) {
     let users = await User.find({})
     users.forEach(user => {
         user.listProperty.forEach(property => {
+            console.log(property)
            const city = property.address.split(',')[1].toLowerCase().replace(/\s/g, '')
            if (city === query){
             properties.push(property)

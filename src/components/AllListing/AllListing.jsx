@@ -34,33 +34,30 @@ export default function AllListingComponent({properties, setProperties}) {
     
   }
 
+ 
+
   return (
     <div>
       <DropdownComponent />
       {properties.length ?
       <div
         style={{
-          width: "100%",
+          width: '100%',
           display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-
-        {properties.map((property, index) => 
-          <ListingCardComponent handleClick={handleClick} index={index} handleShow={handleShow} property={property} setProperties={setProperties} handleClose={handleClose} show={show}/>
-        )}
-      </div>
-      :
-      <h4>No favorite listings</h4>
-        }
       <Row style={{  width: '100%', marginLeft: 10}}>
-        {properties.map(property => 
-          <Col md={3} style={{ marginTop: 10 }}>
-            <ListingCardComponent handleShow={handleShow} property={property} handleClose={handleClose} show={show}/>
-          </Col>
+        {properties.map((property, index) => 
+        <Col md={3} style={{ marginTop: 10 }}>
+          <ListingCardComponent handleClick={handleClick} index={index} handleShow={handleShow} property={property} setProperties={setProperties} handleClose={handleClose} show={show}/>
+        </Col>
         )}
       </Row>
+      </div>
+      :
+      <h4>Loading...</h4>
+        }
       {/* <DetailComponent handleClose={handleClose} show={show} /> */}
     </div>
   );

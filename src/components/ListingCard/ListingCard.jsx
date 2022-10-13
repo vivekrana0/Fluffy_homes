@@ -1,42 +1,19 @@
 import { Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
 // import DetailComponent from "../Detail/Detail";
 import "./ListingCard.css";
 
-export default function ListingCardComponent({handleClick, handleShow, property, index}) {
-
-
-
+export default function ListingCardComponent({handleClick, property, index}) {
+  console.log('here in card' , property)
   return (
-    <>
-      <Card style={{ height: "30rem", width: "18rem" }} onClick={handleShow}>
-        {/* <a href="/user/listingdetail"> */}
-        <Link href="/user/listingdetail" params={property._id}>
-        <Card.Img variant="top" src={property.image} height="255px" />
-        <Card.Body>
-          <Card.Title>{property.address}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">Price:${property.rent}</Card.Subtitle>
-          <Card.Text>Bedroom {property.bedrooms} Bathroom {property.bathrooms}</Card.Text>
-        </Card.Body>
-        </Link>
-        {/* </a> */}
-        <button type="button" class="btn btn-default btn-lg" onClick={() => handleClick(property, index)} >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="40"
-            height="40"
-            fill='currentColor'
-            class="bi bi-bookmark-heart"
-            viewBox="0 0 16 16"
     <div className="container">
        {/* <Container className='p-4'> 
         <Row className='row-cols-1 row-cols-md-3 g-4'> */}
 
           <Card 
           style={{ height: "30rem", width: "18rem" }} 
-          onClick={handleShow} 
+ 
           className="box"
           >
             {/* <a href="/user/listingdetail"> */}
@@ -49,7 +26,7 @@ export default function ListingCardComponent({handleClick, handleShow, property,
             </Card.Body>
             </Link>
             {/* </a> */}
-            <button type="button" class="btn btn-default btn-lg">
+            <button type="button" class="btn btn-default btn-lg" onClick={() => handleClick(property, index)} >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"

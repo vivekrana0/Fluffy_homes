@@ -35,7 +35,7 @@ export default function App () {
           <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser}/>} />
           <Route path='/user/updatelisting' element={<UpdateListing />} />
           <Route path='/user/listingdetail' element={<Detail />} />
-          <Route path='/user/favorites' element={<Favorite />} />
+          <Route path='/user/favorites' element={<Favorite user={user} setUser={setUser}/>} />
         </Routes>
         <Footer />
       
