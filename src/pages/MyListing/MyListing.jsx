@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Row, Col } from "react-bootstrap";
 import DeleteListingCardComponent from "../../components/DeleteListingCard/DeleteListingCard";
 import NavbarComponent from "../../components/Navbar/Navbar";
 
@@ -56,12 +57,16 @@ export default function MyListingComponent({ user, setUser }) {
   return (
     <>
       <NavbarComponent user={user} setUser={setUser} />
+      <Row style={{ width: "100%", marginLeft: 10 }}>
       {properties.map((property) => (
+        <Col md={3} style={{ marginTop: 10 }}>
         <DeleteListingCardComponent
           property={property}
           handleDeleteListing={handleDeleteListing}
         />
+        </Col>
       ))}
+      </Row>
     </>
   );
 }
