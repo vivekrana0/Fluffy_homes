@@ -9,5 +9,6 @@ const upload = multer({ storage: storage})
 
 router.get('/index', propertyCtrl.index)
 router.post('/create',upload.array('image', 5), propertyCtrl.create)
+router.post('/search', propertyCtrl.search)
 
 module.exports = router
