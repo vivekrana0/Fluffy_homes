@@ -23,6 +23,7 @@ const s3 = new aws.S3({
 module.exports = {
     index,
     create,
+    delete: deleteListing,
     search,
     liked,
     favoritesIndex,
@@ -132,5 +133,29 @@ function myListing(req, res) {
         let property = user.listProperty
         console.log(property)
         res.status(200).json(property)
+    })
+}
+
+function deleteListing(req, res) {
+    console.log("User ID: ", req.user._id)
+    console.log("Property Address: ", req.body.address)
+    User.findById(req.user._id, function(err, user) {
+        if(err) return "bad request"
+        let idx = -1
+        user.listProperty.forEach(function(fav, index) {
+            if(fav.address === req.body.address) {
+                idx = index
+                console.log("Index of property in listProeprty: ", idx)
+            }
+        })
+        if (idx >= 0) {
+            console.log("List of property before removing ", user.listProperty.length)
+            user.listProperty.splice(idx, 1)
+            user.save()
+            console.log("List of property after removing ", user.listProperty.length)
+            res.status(200).json("remove")
+        } else {
+            res.status(400).json("not removed")
+        }  
     })
 }
