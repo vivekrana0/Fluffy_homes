@@ -1,8 +1,10 @@
 // import { Form } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import './Detail.css'
+// import Modal from "react-bootstrap/Modal";
+// import Button from "react-bootstrap/Button";
+import "./Detail.css";
 
-export default function ListingDetailComponent() {
+export default function DetailComponent({property}) {
   return (
     <div className="DetailCard">
     <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
@@ -27,5 +29,29 @@ export default function ListingDetailComponent() {
       <ul>Parking: 2</ul><br></br>
     </div>
     </div>
+    // <>
+    //   <Modal
+    //     show={show}
+    //     onHide={handleClose}
+    //     size="xl"
+    //     // dialogClassName="modal-100w"
+    //     centered
+    //     // aria-labelledby="example-custom-modal-styling-title"
+    //   >
+    //     <Modal.Header closeButton>
+    //       <Modal.Title>Modal heading</Modal.Title>
+    //     </Modal.Header>
+    //     <Modal.Body>
+    //     Woohoo, you're reading this text in a modal!</Modal.Body>
+    //     <Modal.Footer>
+    //       <Button variant="secondary" onClick={handleClose}>
+    //         Close
+    //       </Button>
+    //       <Button variant="primary" onClick={handleClose}>
+    //         Save Changes
+    //       </Button>
+    //     </Modal.Footer>
+    //   </Modal>
+    // </>
   );
 }

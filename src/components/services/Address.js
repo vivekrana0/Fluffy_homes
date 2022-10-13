@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-// const access_token = process.env.REACT_APP_ACCESS_TOKEN;
+const access_token= process.env.REACT_APP_ACCESS_TOKEN
 // console.log(access_token);
 
 const useInput = (incomingValue) => {
@@ -12,7 +12,7 @@ const useInput = (incomingValue) => {
     setValue(event.target.value);
 
     try {
-      const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${event.target.value}.json?access_token=pk.eyJ1Ijoidml2ZWtwYXRlbDE5OTkiLCJhIjoiY2w5NGdvdDNjMjJ3ajN1bnp0d3YxZGI3eCJ9.X6eU-tp4fob6AiVVH7x9uA&autocomplete=true`;
+      const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${event.target.value}.json?` + "access_token=" + access_token + "&autocomplete=true";
       const response = await fetch(endpoint);
       const result = await response.json();
       setSuggestions(result?.features);
