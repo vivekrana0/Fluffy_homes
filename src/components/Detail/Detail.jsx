@@ -7,18 +7,18 @@ import "./Detail.css";
 export default function DetailComponent({property}) {
   return (
     <div className="DetailCard">
-    <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+    <div class="d-flex justify-content-center">
       <h1>Detail Page</h1>
     </div>
-
+<br></br>
     <div className="DetailImage" style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
       <Image src="https://media.istockphoto.com/photos/for-rent-sign-in-front-of-new-house-picture-id149060607?k=20&m=149060607&s=612x612&w=0&h=To8zlQbIQ66ep7g-C-19aAFi2CdK98sFnLdSWL8zrl4="></Image>
       </div>
     <div className="DetailInfo" >
-      <p>10 McMaster Road, Winnipeg, MB</p>
+      <h2>10 McMaster Road, Winnipeg, MB</h2>
     </div>
       <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-      <h3>Price: $1000</h3>
+      <h4>Price: $1000</h4>
       </div>
       <h4>Amenities</h4>
       <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>

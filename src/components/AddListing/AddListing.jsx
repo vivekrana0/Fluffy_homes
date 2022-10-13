@@ -1,5 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -20,16 +21,16 @@ export default function AddListingComponent() {
     furnish: false,
   })
 
-  const [file, setFile] = useState([])
+  const [file, setFile] = useState('')
+
+  const navigate = useNavigate()
 
   function handleChange(e) {
-    console.log(e.target.name)
-    console.log(e.target.value)
     setPropertyData({ ...propertyData, [e.target.name]: e.target.value});
   };
 
   function handleFileChange(e) {
-    setFile([...e.target.files])
+    setFile(e.target.files)
     console.log(file)
   }
 
@@ -38,7 +39,11 @@ export default function AddListingComponent() {
     try {
       let jwt = localStorage.getItem('token')
       const formData = new FormData()
-      formData.append('image', file)
+
+      for (const key in Object.keys(file)){
+        formData.append('image', file[key])
+      }
+
       for (const name in propertyData){
         formData.append(name, propertyData[name])
       }
@@ -53,6 +58,8 @@ export default function AddListingComponent() {
 
       console.log('Success: ' , response)
 
+      navigate('/')
+
     } catch(err) {
       console.log('error', err)
     }
@@ -60,10 +67,11 @@ export default function AddListingComponent() {
 
 
   return (
-<div>
-<div className="RentalHeader" >
+<div className="AddForm">
+<div class="d-flex justify-content-center">
   <h1>Add Rental Listing</h1>
-  <div className="AddListingForm">
+</div>
+  <div class="col-xs-1" align="center">
     <Form onSubmit={handleSubmit} >
     <Form.Group className="mb-3">
       <Form.Label column="lg" lg={2}>
@@ -81,7 +89,8 @@ export default function AddListingComponent() {
                 propertyData.address = suggestion.place_name
                 address.setSuggestions([])
             }}>{suggestion.place_name}</p>
-        })}</div>
+        })}
+        </div>
       )}
     </Form.Group>
 
@@ -105,12 +114,13 @@ export default function AddListingComponent() {
         <Form.Control size="lg" name="parking" value={propertyData.parking} type="number" placeholder="Parkings" onChange={handleChange} ></Form.Control>
       </Form.Group>
 
-      <Row>
+      <div>
+        <Row>
         <Col>
           <Form.Group className="mb-3">
             <Form.Label column="lg" lg={2}>Utilities Included?</Form.Label>
             <Form.Select name='utility' onChange={handleChange} size="lg" aria-label="Default select example">
-              <option  >Yes or No?</option>
+              <option>Yes or No?</option>
               <option  value={true}>Yes</option>
               <option  value={false}>No</option>
             </Form.Select>
@@ -118,7 +128,7 @@ export default function AddListingComponent() {
         </Col>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label column="lg" lg={2}>Furnished?</Form.Label>
+            <Form.Label column="lg" lg={2}>Fully Furnished?</Form.Label>
             <Form.Select name='furnish'  onChange={handleChange} size="lg" aria-label="Default select example">
               <option>Yes or No?</option>
               <option value={true} >Yes</option>
@@ -126,18 +136,20 @@ export default function AddListingComponent() {
             </Form.Select>
           </Form.Group>
         </Col>
-      </Row>
+        </Row>
+      </div>
 
+      
       <Form.Group controlId="formFile" className="mb-3" >
         <Form.Label>Upload Images</Form.Label>
-        <Form.Control onChange={handleFileChange} type="file" multiple accept="image/*"/>
+        <Form.Control onChange={handleFileChange} name='file' type="file" multiple accept="image/*"/>
       </Form.Group>
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
+
     </Form>
-    </div>
     </div>
     </div>
   );

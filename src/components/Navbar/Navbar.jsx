@@ -15,6 +15,14 @@ export default function NavbarComponent({user, setUser}) {
     return (
         <Navbar key={false} bg="light" expand={false} className="mb-3">
           <Container fluid>
+          <Navbar.Brand href="/">
+            <img
+              src="https://i.imgur.com/fXygila.png"
+              width="60"
+              height="60"
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
             <Navbar.Brand id='brand' href="/">Rental Bravo</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
             <Navbar.Offcanvas

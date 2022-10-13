@@ -55,29 +55,34 @@ async function index(req, res) {
 
 
 async function create(req, res) {
-    try{
-        req.file.buffer
-        const imageName = randomImageName()
-        const fileExtension = req.file.originalname.split('.')[1]
-        const key = imageName + '.' + fileExtension
-        const params = {
-            Bucket: bucketName,
-            Key: key,
-            Body: req.file.buffer,
-            ContentType: req.file.mimetype,
-        }
+    try{ 
+            const obj = req.body
+            obj.image = []
+            files = req.files
+            const parmas = files.map(file => {
+                const imageName = randomImageName()
+                const fileExtension = file.originalname.split('.')[1]
+                const key = imageName + '.' + fileExtension
+                const url = 'https://' + bucketName + '.' + S3_BASE_URL + key
+                obj.image.push(url)
 
-        const url = 'https://' + bucketName + '.' + S3_BASE_URL + key
-        req.body.image = url 
+                     return {
+                        Bucket: bucketName,
+                        Key: key,
+                        Body: file.buffer,
+                        ContentType: file.mimetype,
+                    }
+            
+                })
 
-        s3.upload(params, (err) => {
-            if(err) console.log(err)
+            await Promise.all(parmas.map((param) => s3.upload(param).promise()))
+            
             User.findById(req.user._id, function(err, user){
-               user.listProperty.push(req.body)
-               user.save()
-               res.status(200).json('ok')
-           })
-        })
+                user.listProperty.push(obj)
+                user.save()
+                res.status(200).json('ok')
+               })
+
     } catch(err){
         res.status(400).json(err)
     }

@@ -1,16 +1,8 @@
-.RenatlHeader {
-    height: 100vh;
-    width: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.AddForm {
+    height: 100%;
+    width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 5%;
 }
 
-.AddListingForm {
-    width: 100%;
-    padding-bottom: 3%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border:4px ridge rgb(171, 171, 249);
-}
