@@ -1,8 +1,12 @@
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 // import DetailComponent from "../Detail/Detail";
 
-export default function ListingCardComponent({handleShow, property}) {
+export default function ListingCardComponent({handleClick, handleShow, property, index}) {
+
+
+
   return (
     <>
       <Card style={{ height: "30rem", width: "18rem" }} onClick={handleShow}>
@@ -16,12 +20,12 @@ export default function ListingCardComponent({handleShow, property}) {
         </Card.Body>
         </Link>
         {/* </a> */}
-        <button type="button" class="btn btn-default btn-lg">
+        <button type="button" class="btn btn-default btn-lg" onClick={() => handleClick(property, index)} >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
             height="40"
-            fill="currentColor"
+            fill='currentColor'
             class="bi bi-bookmark-heart"
             viewBox="0 0 16 16"
           >

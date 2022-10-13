@@ -8,6 +8,7 @@ import AddListing from '../AddListing/AddListing';
 import UpdateListing from '../UpdateListing/UpdateListing';
 import Footer from "../../components/Footer/Footer";
 import Detail from '../Detail/Detail'
+import Favorite from '../Favorites/Favorites';
 
 export default function App () {
   const [user, setUser] = useState(null)
@@ -34,6 +35,7 @@ export default function App () {
           <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser}/>} />
           <Route path='/user/updatelisting' element={<UpdateListing />} />
           <Route path='/user/listingdetail' element={<Detail />} />
+          <Route path='/user/favorites' element={<Favorite />} />
         </Routes>
         <Footer />
       

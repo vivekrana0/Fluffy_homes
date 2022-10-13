@@ -23,7 +23,9 @@ const s3 = new aws.S3({
 module.exports = {
     index,
     create,
-    search
+    search,
+    liked,
+    favoritesIndex,
 }
 
 // Get All Properties
@@ -104,4 +106,35 @@ async function search(req, res) {
         })
     })
     res.status(200).json(properties)
+}
+
+function liked(req, res) {
+    User.findById(req.user._id, function(err, user){
+        if (err) return "bad request"
+        let array = -1
+        user.favProperty.forEach(function(fav, index){
+            // console.log('body id', req.body._id)
+            // console.log('fav id', fav._id)
+            if(fav.address === req.body.address){
+                array = index
+            }
+        })
+        if (array > -1){
+            user.favProperty.splice(array, 1)
+            user.save()
+            res.status(200).json('remove')
+        }else{
+            user.favProperty.push(req.body)
+            user.save()
+            res.status(200).json('add')
+        }
+    })
+}
+
+function favoritesIndex(req, res) {
+    User.findById(req.user._id, function(err, user){
+        if(err) return "bad request"
+        let favProperties = user.favProperty
+        res.status(200).json(favProperties)
+    })
 }
