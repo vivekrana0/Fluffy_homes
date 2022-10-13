@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,6 +11,7 @@ import Footer from "../../components/Footer/Footer";
 import Detail from "../Detail/Detail";
 import Favorite from "../Favorites/Favorites";
 import MyListingComponent from "../MyListing/MyListing";
+
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -29,27 +31,32 @@ export default function App() {
     }
   }, []);
 
+
   return (
-    <main className="App">
-      <Routes>
-        <Route path="" element={<Home user={user} setUser={setUser} />} />
-        <Route path="/user/register" element={<Authpage setUser={setUser} />} />
-        <Route
-          path="/user/addlisting"
-          element={<AddListing user={user} setUser={setUser} />}
-        />
-        <Route path="/user/updatelisting" element={<UpdateListing />} />
-        <Route
-          path="/user/mylisting"
-          element={<MyListingComponent user={user} setUser={setUser} />}
-        />
-        <Route path="/user/listingdetail" element={<Detail />} />
-        <Route
-          path="/user/favorites"
-          element={<Favorite user={user} setUser={setUser} />}
-        />
-      </Routes>
-      <Footer />
-    </main>
-  );
+
+        
+      <main className="App">
+       <Routes>
+          
+            <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser} />} />
+            <Route path='/user/updatelisting' element={<UpdateListing />} />
+            <Route path='/user/mylisting' element={<MyListingComponent user={user} setUser={setUser} />} />
+            <Route path='/user/favorites' element={<Favorite user={user} setUser={setUser} />} />
+            <Route path='' element={<Home user={user} setUser={setUser} />} />
+            <Route path='/user/register' element={<Authpage setUser={setUser} />} />
+            <Route path='/user/listingdetail' element={<Detail />} />
+            <Route path='*' element={<h1>Not Found</h1>} />
+
+            
+        
+          {/* <Navigate to='/user/register'/> */}
+   
+        </Routes>
+          <Footer />  
+
+
+      
+      </main>
+    )
+
 }

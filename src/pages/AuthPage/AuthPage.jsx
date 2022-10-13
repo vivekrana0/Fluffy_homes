@@ -3,10 +3,12 @@ import NavbarComponent from "../../components/Navbar/Navbar";
 import "./AuthPage.css";
 import { useState } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import { NavLink } from "react-router-dom";
 
 // AuthPage for user log in and sign up
 export default function Authpage({ setUser }) {
   const [showLogin, setShowLogin] = useState(true);
+
 
   return (
     <div>
