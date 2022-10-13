@@ -6,14 +6,54 @@ import ListingCardComponent from "../ListingCard/ListingCard";
 import {Col, Row} from 'react-bootstrap'
 import "./AllListing.css"
 
-export default function AllListingComponent({properties}) {
+export default function AllListingComponent({properties, setProperties}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  async function handleClick(property, index){
+    console.log([...properties], index)
+    let jwt = localStorage.getItem('token')
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", 'Authorization': 'Bearer' + jwt },
+      body: JSON.stringify(property)
+    }
+    const fetchResponse = await fetch('/api/property/liked', options)
+    const response = await fetchResponse.json()
+    if(response === 'add'){
+      setProperties([...properties].push(property))
+    }else{
+      const original = [...properties]
+      const removed = original.splice(index, 1)
+      setProperties(original)
+    }
+   
+ 
+    
+  }
+
   return (
     <div>
       <DropdownComponent />
+      {properties.length ?
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+
+        {properties.map((property, index) => 
+          <ListingCardComponent handleClick={handleClick} index={index} handleShow={handleShow} property={property} setProperties={setProperties} handleClose={handleClose} show={show}/>
+        )}
+      </div>
+      :
+      <h4>No favorite listings</h4>
+        }
       <Row style={{  width: '100%', marginLeft: 10}}>
         {properties.map(property => 
           <Col md={3} style={{ marginTop: 10 }}>

@@ -41,6 +41,7 @@ export default function NavbarComponent({user, setUser}) {
                  {user && 
                 <Nav.Link href="#listings">My Listings</Nav.Link>
                 }
+                <Nav.Link href="/user/favorites">Favorites</Nav.Link>
                 <Nav.Link href="/user/addlisting">List A Rental</Nav.Link>
                 <Nav.Link href="/user/updatelisting">Update Rental</Nav.Link>
                 <Nav.Link href="/user/listingdetail">Detail</Nav.Link>

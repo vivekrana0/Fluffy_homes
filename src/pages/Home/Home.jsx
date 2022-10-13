@@ -36,7 +36,8 @@ export default function Home({user, setUser}) {
             setProperties(null)
         }
         
-    }   
+    }
+    
 
     useEffect(() => {
         const fetchData = async () => {
