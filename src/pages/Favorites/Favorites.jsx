@@ -8,7 +8,6 @@ import { Navigate } from "react-router-dom";
 export default function Favorite({ user, setUser }) {
   const [properties, setProperties] = useState([]);
 
-    const [properties, setProperties] = useState([])
 
     useEffect(()=>{
         async function fetchData(){
