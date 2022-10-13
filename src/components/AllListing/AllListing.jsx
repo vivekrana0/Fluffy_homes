@@ -1,17 +1,13 @@
 import { useState } from "react";
+import { Row, Col } from "react-bootstrap"
 // import Card from "react-bootstrap/Card";
 // import DetailComponent from "../Detail/Detail";
 import DropdownComponent from "../DropDown/DropDown";
 import ListingCardComponent from "../ListingCard/ListingCard";
-import {Col, Row} from 'react-bootstrap'
-import "./AllListing.css"
-
 export default function AllListingComponent({properties, setProperties}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-
   async function handleClick(property, index){
     console.log([...properties], index)
     let jwt = localStorage.getItem('token')
@@ -29,11 +25,7 @@ export default function AllListingComponent({properties, setProperties}) {
       const removed = original.splice(index, 1)
       setProperties(original)
     }
-   
- 
-    
   }
-
   return (
     <div>
       <DropdownComponent />
@@ -46,21 +38,24 @@ export default function AllListingComponent({properties, setProperties}) {
           alignItems: "center",
         }}
       >
-
-        {properties.map((property, index) => 
+      <Row style={{  width: '100%', marginLeft: 10}}>
+        {properties.map((property, index) =>
+        <Col md={3} style={{ marginTop: 10 }}>
           <ListingCardComponent handleClick={handleClick} index={index} handleShow={handleShow} property={property} setProperties={setProperties} handleClose={handleClose} show={show}/>
+        </Col>
         )}
+      </Row>
       </div>
       :
       <h4>No favorite listings</h4>
-        }
-      <Row style={{  width: '100%', marginLeft: 10}}>
+      }
+      {/* <Row style={{  width: '100%', marginLeft: 10}}>
         {properties.map(property => 
           <Col md={3} style={{ marginTop: 10 }}>
             <ListingCardComponent handleShow={handleShow} property={property} handleClose={handleClose} show={show}/>
           </Col>
         )}
-      </Row>
+      </Row> */}
       {/* <DetailComponent handleClose={handleClose} show={show} /> */}
     </div>
   );

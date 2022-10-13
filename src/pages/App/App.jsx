@@ -9,6 +9,7 @@ import UpdateListing from '../UpdateListing/UpdateListing';
 import Footer from "../../components/Footer/Footer";
 import Detail from '../Detail/Detail'
 import Favorite from '../Favorites/Favorites';
+import MyListingComponent from '../MyListing/MyListing';
 
 export default function App () {
   const [user, setUser] = useState(null)
@@ -34,6 +35,7 @@ export default function App () {
           <Route path='/user/register' element={<Authpage setUser={setUser} />} />
           <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser}/>} />
           <Route path='/user/updatelisting' element={<UpdateListing />} />
+          <Route path='/user/mylisting' element={<MyListingComponent user={user} setUser={setUser}/>} />
           <Route path='/user/listingdetail' element={<Detail />} />
           <Route path='/user/favorites' element={<Favorite />} />
         </Routes>

@@ -26,6 +26,7 @@ module.exports = {
     search,
     liked,
     favoritesIndex,
+    myListing
 }
 
 // Get All Properties
@@ -78,11 +79,13 @@ async function create(req, res) {
 }
 
 async function search(req, res) {
+    console.log(req.body.searchQuery)
     const query = req.body.searchQuery.toLowerCase().replace(/\s/g, '')
     let properties = []
     let users = await User.find({})
     users.forEach(user => {
         user.listProperty.forEach(property => {
+            console.log(property.address)
            const city = property.address.split(',')[1].toLowerCase().replace(/\s/g, '')
            if (city === query){
             properties.push(property)
@@ -120,5 +123,14 @@ function favoritesIndex(req, res) {
         if(err) return "bad request"
         let favProperties = user.favProperty
         res.status(200).json(favProperties)
+    })
+}
+
+function myListing(req, res) {
+    User.findById(req.user._id, function(err, user){
+        if(err) return "Bad Request"
+        let property = user.listProperty
+        console.log(property)
+        res.status(200).json(property)
     })
 }

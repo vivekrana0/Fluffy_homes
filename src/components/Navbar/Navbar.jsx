@@ -38,8 +38,8 @@ export default function NavbarComponent({user, setUser}) {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="/">Home</Nav.Link>
-                 {user && 
-                <Nav.Link href="#listings">My Listings</Nav.Link>
+                {user &&
+                <Nav.Link href="/user/mylisting">My Listings</Nav.Link>
                 }
                 <Nav.Link href="/user/favorites">Favorites</Nav.Link>
                 <Nav.Link href="/user/addlisting">List A Rental</Nav.Link>

@@ -14,6 +14,7 @@ export default function AddListingComponent() {
   const [propertyData, setPropertyData] = useState({
     address : '',
     moveInDate: '',
+    rent: 0,
     bedrooms: 0,
     bathrooms: 0,
     parking: 0,
@@ -96,7 +97,7 @@ export default function AddListingComponent() {
 
     <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Rent Price?</Form.Label>
-        <Form.Control size="lg" name='rentprice' value={propertyData.rentprice} type="number" placeholder="Rentprice" onChange={handleChange} ></Form.Control>
+        <Form.Control size="lg" name='rent' value={propertyData.rent} type="number" placeholder="Rent" onChange={handleChange} ></Form.Control>
       </Form.Group>
 
       <Form.Group className="mb-3">
