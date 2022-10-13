@@ -55,6 +55,7 @@ async function create(req, res) {
     const obj = req.body;
     obj.image = [];
     files = req.files;
+    console.log("herrrrrrrrr", bucketRegion)
     const parmas = files.map((file) => {
       const imageName = randomImageName();
       const fileExtension = file.originalname.split(".")[1];

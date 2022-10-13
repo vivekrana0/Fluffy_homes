@@ -25,7 +25,7 @@ export default function NavbarComponent({user, setUser}) {
               className="d-inline-block align-top"
             />
           </Link>
-            <Navbar.Brand id='brand' href="/">Rental Bravo</Navbar.Brand>
+            <Link id='brand' to="/">Rental Bravo</Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${false}`}
@@ -60,4 +60,4 @@ export default function NavbarComponent({user, setUser}) {
         </Navbar>
 
       );
-
+}
