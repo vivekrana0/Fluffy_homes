@@ -2,9 +2,9 @@ import NavbarComponent from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
 import { useEffect, useState } from "react"
-import AllListingComponent from "../../components/AllListing/AllListing";
+import FavoriteListings from "../../components/FavoritesListing/Favorites";
 
-export default function Favorite() {
+export default function Favorite({user, setUser}) {
 
     const [properties, setProperties] = useState([])
 
@@ -20,6 +20,7 @@ export default function Favorite() {
             const fav = await result.json()
             setProperties(fav)
             
+            
         } catch(err) {
             console.log("Error: ", err)
         }
@@ -27,11 +28,10 @@ export default function Favorite() {
     fetchData()
     }, [])
 
-
     return (
         <>
-            <NavbarComponent/>
-            <AllListingComponent properties={properties} setProperties={setProperties}/>
+            <NavbarComponent user={user} setUser={setUser}/>
+            <FavoriteListings properties={properties} setProperties={setProperties}/>
             <Footer/>
         </>
     )
