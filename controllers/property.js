@@ -28,16 +28,6 @@ module.exports = {
 
 // Get All Properties
 async function index(req, res) {
-    // let properties = await User.find({listProperty})
-    // console.log("Index To Get All Property: ", properties)
-    // try{
-    //     let properties = await User.find({listProperty})
-    //     console.log("Index To Get All Property: ", properties)
-    //     res.status(200).json(properties)
-    // } catch(error) {
-    //     console.log("Inside index() > catch Block")
-    //     res.status(400).json(error)
-    // }
     try {
         let properties = []
         let users = await User.find({})
@@ -46,7 +36,6 @@ async function index(req, res) {
                 properties.push(property) 
             })
         })
-        // console.log("All Properties: ", properties)
         res.status(200).json(properties)
     } catch (error) {
         console.log("Inside index() > catch Block")
@@ -66,16 +55,13 @@ async function create(req, res) {
                 const key = imageName + '.' + fileExtension
                 const url = 'https://' + bucketName + '.' + S3_BASE_URL + key
                 obj.image.push(url)
-
                      return {
                         Bucket: bucketName,
                         Key: key,
                         Body: file.buffer,
                         ContentType: file.mimetype,
                     }
-            
                 })
-
             await Promise.all(parmas.map((param) => s3.upload(param).promise()))
             
             User.findById(req.user._id, function(err, user){
@@ -96,9 +82,7 @@ async function search(req, res) {
     users.forEach(user => {
         user.listProperty.forEach(property => {
            const city = property.address.split(',')[1].toLowerCase().replace(/\s/g, '')
-           console.log(city)
-           console.log(req.body.searchQuery)
-           if (city === req.body.searchQuery){
+           if (city === query){
             properties.push(property)
            }
         })
