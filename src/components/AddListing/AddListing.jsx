@@ -94,6 +94,11 @@ export default function AddListingComponent() {
       )}
     </Form.Group>
 
+    <Form.Group className="mb-3">
+        <Form.Label column="lg" lg={2}>Rent Price?</Form.Label>
+        <Form.Control size="lg" name='rentprice' value={propertyData.rentprice} type="number" placeholder="Rentprice" onChange={handleChange} ></Form.Control>
+      </Form.Group>
+
       <Form.Group className="mb-3">
         <Form.Label column="lg" lg={2}>Move-In-Date</Form.Label>
         <Form.Control size="lg" name='moveInDate' value={propertyData.moveInDate} type="date" onChange={handleChange} ></Form.Control>
@@ -155,4 +160,3 @@ export default function AddListingComponent() {
   );
   
 }
-

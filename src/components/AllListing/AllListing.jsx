@@ -3,6 +3,8 @@ import { useState } from "react";
 // import DetailComponent from "../Detail/Detail";
 import DropdownComponent from "../DropDown/DropDown";
 import ListingCardComponent from "../ListingCard/ListingCard";
+import {Col, Row} from 'react-bootstrap'
+import "./AllListing.css"
 
 export default function AllListingComponent({properties}) {
   const [show, setShow] = useState(false);
@@ -12,18 +14,13 @@ export default function AllListingComponent({properties}) {
   return (
     <div>
       <DropdownComponent />
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-        }}
-      >
+      <Row style={{  width: '100%', marginLeft: 10}}>
         {properties.map(property => 
-          <ListingCardComponent handleShow={handleShow} property={property} handleClose={handleClose} show={show}/>
+          <Col md={3} style={{ marginTop: 10 }}>
+            <ListingCardComponent handleShow={handleShow} property={property} handleClose={handleClose} show={show}/>
+          </Col>
         )}
-      </div>
+      </Row>
       {/* <DetailComponent handleClose={handleClose} show={show} /> */}
     </div>
   );
