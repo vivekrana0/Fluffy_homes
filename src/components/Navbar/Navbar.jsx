@@ -13,13 +13,13 @@ export default function NavbarComponent({user, setUser}) {
       setUser(null)
     }
     return (
-        <Navbar key={false} bg="light" expand={false} className="mb-3">
+        <Navbar key={false}  expand={false} className="mb-3">
           <Container fluid>
           <Navbar.Brand href="/">
             <img
               src="https://i.imgur.com/fXygila.png"
-              width="60"
-              height="60"
+              width="80"
+              height="80"
               className="d-inline-block align-top"
             />
           </Navbar.Brand>

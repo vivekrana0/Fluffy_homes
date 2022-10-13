@@ -3,7 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 export default function DropdownComponent() {
   return (
     <>
-      <Dropdown>
+      <Dropdown style={{  width: '100%', margin: 10}}>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
           Sort By
         </Dropdown.Toggle>
@@ -11,7 +11,6 @@ export default function DropdownComponent() {
         <Dropdown.Menu variant="dark">
           <Dropdown.Item href="#/action-1">Price low to High</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Price High to Low</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">sort</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <br></br>
