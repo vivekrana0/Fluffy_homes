@@ -23,6 +23,7 @@ const s3 = new aws.S3({
 module.exports = {
     index,
     create,
+    search
 }
 
 // Get All Properties
@@ -45,7 +46,7 @@ async function index(req, res) {
                 properties.push(property) 
             })
         })
-        console.log("All Properties: ", properties)
+        // console.log("All Properties: ", properties)
         res.status(200).json(properties)
     } catch (error) {
         console.log("Inside index() > catch Block")
@@ -86,4 +87,21 @@ async function create(req, res) {
     } catch(err){
         res.status(400).json(err)
     }
+}
+
+async function search(req, res) {
+    const query = req.body.searchQuery.toLowerCase().replace(/\s/g, '')
+    let properties = []
+    let users = await User.find({})
+    users.forEach(user => {
+        user.listProperty.forEach(property => {
+           const city = property.address.split(',')[1].toLowerCase().replace(/\s/g, '')
+           console.log(city)
+           console.log(req.body.searchQuery)
+           if (city === req.body.searchQuery){
+            properties.push(property)
+           }
+        })
+    })
+    res.status(200).json(properties)
 }
