@@ -1,10 +1,20 @@
 import { Row, Col } from "react-bootstrap";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./UpdateListing.css";
 
 
+
 export default function UpdateListingComponent() {
+
+  const [file, setFile] = useState('')
+
+  function handleFileChange(e) {
+    setFile(e.target.files)
+    console.log(file)
+  }
+
     return (
   <div className="UpdateForm">
     <div class="d-flex justify-content-center">
@@ -62,7 +72,10 @@ export default function UpdateListingComponent() {
         </Row>
       </div>
 
-
+      <Form.Group controlId="formFile" className="mb-3" >
+        <Form.Label>Upload Images</Form.Label>
+        <Form.Control onChange={handleFileChange} name='file' type="file" multiple accept="image/*"/>
+      </Form.Group>
 
         <Button variant="primary" type="submit">
           Submit
