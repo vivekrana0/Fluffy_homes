@@ -170,44 +170,30 @@ export default function AddListingComponent() {
             ></Form.Control>
           </Form.Group>
 
-          <div>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label column="lg" lg={2}>
-                    Utilities Included?
-                  </Form.Label>
-                  <Form.Select
-                    name="utility"
-                    onChange={handleChange}
-                    size="lg"
-                    aria-label="Default select example"
-                  >
-                    <option>Yes or No?</option>
-                    <option value={true}>Yes</option>
-                    <option value={false}>No</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label column="lg" lg={2}>
-                    Fully Furnished?
-                  </Form.Label>
-                  <Form.Select
-                    name="furnish"
-                    onChange={handleChange}
-                    size="lg"
-                    aria-label="Default select example"
-                  >
-                    <option>Yes or No?</option>
-                    <option value={true}>Yes</option>
-                    <option value={false}>No</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-            </Row>
-          </div>
+      <div>
+        <Row>
+        <Col>
+          <Form.Group className="mb-3">
+            <Form.Label column="lg" lg={2}>Utilities Included?</Form.Label>
+            <Form.Select name='utility' onChange={handleChange} size="lg" aria-label="Default select example">
+              <option>Yes or No?</option>
+              <option  value={true}>Yes</option>
+              <option  value={false}>No</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col>
+          <Form.Group className="mb-3">
+            <Form.Label column="lg" lg={2}>Fully Furnished?</Form.Label>
+            <Form.Select name='furnish'  onChange={handleChange} size="lg" aria-label="Default select example">
+              <option>Yes or No?</option>
+              <option value={true} >Yes</option>
+              <option  value={false} >No</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        </Row>
+      </div>
 
           <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>Upload Images</Form.Label>

@@ -1,57 +1,101 @@
 // import { Form } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-// import Modal from "react-bootstrap/Modal";
-// import Button from "react-bootstrap/Button";
-import "./Detail.css";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Carousel from "react-bootstrap/Carousel";
 
-export default function DetailComponent({property}) {
+import "./Detail.css";
+import { CarouselItem } from "react-bootstrap";
+
+export default function DetailComponent({ property }) {
+  console.log("property", property);
+
+  const [properties, setProperties] = useState([]);
+
+  const [singleProperty, setSingleProperty] = useState({});
+
+  const params = useParams();
+  console.log("[THE PARAMS]", params.id);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let propertyData = await fetch("/api/property/index");
+        let propertiesObjects = await propertyData.json();
+
+        const theSingleProperty = propertiesObjects.filter((spec) => {
+          return spec._id === params.id;
+        });
+        setSingleProperty(theSingleProperty[0]);
+        console.log(theSingleProperty[0].image);
+      } catch (error) {
+        setProperties(null);
+        console.log("Error: ", error);
+      }
+    };
+
+    fetchData().catch(console.error);
+  }, []);
+
   return (
     <div className="DetailCard">
-    <div class="d-flex justify-content-center">
-      <h1>Detail Page</h1>
-    </div>
-<br></br>
-    <div className="DetailImage" style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-      <Image src="https://media.istockphoto.com/photos/for-rent-sign-in-front-of-new-house-picture-id149060607?k=20&m=149060607&s=612x612&w=0&h=To8zlQbIQ66ep7g-C-19aAFi2CdK98sFnLdSWL8zrl4="></Image>
+      <div class="d-flex justify-content-center">
+        <h1>Detail Page</h1>
       </div>
-    <div className="DetailInfo" >
-      <h2>10 McMaster Road, Winnipeg, MB</h2>
-    </div>
-      <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-      <h4>Price: $1000</h4>
+      <br></br>
+      <Carousel >
+        {singleProperty?.image?.map((singleImage) => (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={singleImage}
+              alt="First slide"
+              height="500px"
+              width='200px' 
+              margin= '100'
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+      <div className="DetailInfo">
+        <h2>{singleProperty?.address}</h2>
+      </div>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <h4>Price: {singleProperty?.rent} </h4>
       </div>
       <h4>Amenities</h4>
-      <div style={{  width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-      <ul>Bedrooms: 3</ul><br></br>
-      <ul>Bathrooms: 2</ul><br></br>
-      <ul>Unitilies Included: Yes</ul><br></br>
-      <ul>Furnished: Yes</ul><br></br>
-      <ul>Parking: 2</ul><br></br>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <ul>Bedrooms: {singleProperty?.bedrooms}</ul>
+        <br></br>
+        <ul>Bathrooms: {singleProperty?.bathrooms}</ul>
+        <br></br>
+        <ul>
+          Unitilies Included:{" "}
+          {JSON.stringify(singleProperty?.utility) === "true" ? "Yes" : "No"}
+        </ul>
+        <br></br>
+        <ul>
+          Furnished:{" "}
+          {JSON.stringify(singleProperty?.furnish) === "true" ? "Yes" : "No"}
+        </ul>
+        <br></br>
+        <ul>Parking: {singleProperty?.parking}</ul>
+        <br></br>
+      </div>
     </div>
-    </div>
-    // <>
-    //   <Modal
-    //     show={show}
-    //     onHide={handleClose}
-    //     size="xl"
-    //     // dialogClassName="modal-100w"
-    //     centered
-    //     // aria-labelledby="example-custom-modal-styling-title"
-    //   >
-    //     <Modal.Header closeButton>
-    //       <Modal.Title>Modal heading</Modal.Title>
-    //     </Modal.Header>
-    //     <Modal.Body>
-    //     Woohoo, you're reading this text in a modal!</Modal.Body>
-    //     <Modal.Footer>
-    //       <Button variant="secondary" onClick={handleClose}>
-    //         Close
-    //       </Button>
-    //       <Button variant="primary" onClick={handleClose}>
-    //         Save Changes
-    //       </Button>
-    //     </Modal.Footer>
-    //   </Modal>
-    // </>
   );
 }

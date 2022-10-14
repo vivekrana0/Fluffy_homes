@@ -5,10 +5,12 @@ import "./ListingCard.css";
 // ListingCardComponent
 export default function ListingCardComponent({
   handleClick,
+  handleDetails,
   handleShow,
   property,
   index,
 }) {
+  console.log('[property]', property)
   return (
     <div className="container">
       <Card
