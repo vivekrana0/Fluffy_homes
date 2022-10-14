@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import DeleteListingCardComponent from "../../components/DeleteListingCard/DeleteListingCard";
 import NavbarComponent from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 // MyListing Page for the users who have listed their properties
 export default function MyListingComponent({ user, setUser }) {
@@ -77,6 +78,7 @@ export default function MyListingComponent({ user, setUser }) {
           ))}
         </Row>
       </div>
+      <Footer/>
     </>
   );
 }

@@ -3,6 +3,7 @@ import NavbarComponent from "../../components/Navbar/Navbar";
 import "./AuthPage.css";
 import { useState } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import Footer from "../../components/Footer/Footer";
 
 // AuthPage for user log in and sign up
 export default function Authpage({ setUser }) {
@@ -22,6 +23,7 @@ export default function Authpage({ setUser }) {
       ) : (
         <SignUpForm setUser={setUser} />
       )}
+      <Footer/>
     </div>
   );
 }

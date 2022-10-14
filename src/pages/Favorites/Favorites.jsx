@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import FavoriteListings from "../../components/FavoritesListing/Favorites";
 import { Navigate } from "react-router-dom";
 
+
 export default function Favorite({ user, setUser }) {
   const [properties, setProperties] = useState([]);
 
@@ -36,13 +37,10 @@ export default function Favorite({ user, setUser }) {
         return <Navigate to='/user/register' />
     }
     return (
-        <>
-     
-            <NavbarComponent user={user} setUser={setUser}/>
+        <>    
+           <NavbarComponent user={user} setUser={setUser}/>
             <FavoriteListings properties={properties} setProperties={setProperties}/>
             <Footer/>
-
-        
         </>
     )
 }

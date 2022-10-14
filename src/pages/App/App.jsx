@@ -38,7 +38,6 @@ export default function App() {
         
       <main className="App">
        <Routes>
-          
             <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser} />} />
             <Route path='/user/updatelisting' element={<UpdateListing />} />
             <Route path='/user/mylisting' element={<MyListingComponent user={user} setUser={setUser} />} />
@@ -47,13 +46,8 @@ export default function App() {
             <Route path='/user/register' element={<Authpage setUser={setUser} />} />
             <Route path='/user/listingdetail' element={<Detail />} />
             <Route path='*' element={<h1>Not Found</h1>} />
-
-            
-        
-          {/* <Navigate to='/user/register'/> */}
-   
         </Routes>
-          <Footer />  
+      
 
 
       

@@ -3,6 +3,7 @@ import AllListingComponent from "../../components/AllListing/AllListing";
 import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Footer from "../../components/Footer/Footer";
 
 // Home Page
 export default function Home({ user, setUser }) {
@@ -74,6 +75,7 @@ export default function Home({ user, setUser }) {
       </Form>
       {error && <h4>No results found</h4>}
       {properties && <AllListingComponent properties={properties} />}
+      <Footer/>
     </div>
   );
 }
