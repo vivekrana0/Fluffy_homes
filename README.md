@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Project 4: Rental Bravo
+![Banner](https://i.imgur.com/W5LoUou.png)
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Rental Bravo is the latest Rental Market Webiste to hit the web. The purpose of the website is to allow people to loacte and rent thier next home. The website is designed to make it easy and painless for our customers to find the home of thier dreams for rent. The webiste also allows a great platform for landlords and realtors to host thier listing to find thier perfect tennant for thier perfect home.
 
-In the project directory, you can run:
+Welcome to Rental Bravo, the website was created using React, Javascript and styled with Bootstrap. 
+Please take a look at Rental Braco and enjoy the features available!
+<br>
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- <b>Mongoose</b>
+- <b>Express</b>
+- <b>React</b>
+- <b>Node</b>
+- <b>Bootstrap</b>
+- <b>Amazon Web Services (AWS S3)</b>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+Lets get started!
+Access the app through the link below:
+### [Live Link](https://rental-bravo.herokuapp.com/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+### Rental Bravo
+<img src='https://i.imgur.com/4FSR9j0.png'>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Details Page
+<img src='https://i.imgur.com/Pfx0DEE.png'>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### MapBox Geocoding API:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Mapbox Geocoding API allows users to do forward geocoding operations. Forward Geocoding takes text in the form of an address or place and converts it to geographic coordinates (latitude/longitude). This Api allows us to auto-load the address when searching for listing in specific locations. 
 
-### `npm run eject`
+<img src='https://i.imgur.com/ViIAAaW.png'>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Listing and Favourite:
+Rental Bravo allows its users to upload and delete their own posts, while also allowing users to favourite or unfavourite listings on the wedbiste.
+<table>
+  <tr>
+    <td>My Post Page</td>
+    <td>My Listing</td>
+    <td>My Favourite Listings</td>
+  </tr>
+ </table>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Code Examples
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+- The code snippet below is used to serach for specific listings based on the location input by the user. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+async function search(req, res) {
+  console.log(req.body.searchQuery);
+  const query = req.body.searchQuery.toLowerCase().replace(/\s/g, "");
+  let properties = [];
+  let users = await User.find({});
+  users.forEach((user) => {
+    user.listProperty.forEach((property) => {
+      const city = property.address
+        .split(",")[1]
+        .toLowerCase()
+        .replace(/\s/g, "");
+      if (city === query) {
+        properties.push(property);
+      }
+    });
+  });
+  res.status(200).json(properties);
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Future enhancements
 
-### Code Splitting
+1. Add a messaging box to or email service to reach out to the property owner directly.
+2. including filters to sort by specific parameters.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project Tools
 
-### Analyzing the Bundle Size
+### [Trello Board](https://trello.com/b/ToyzjjIN/rental-bravo)
+### [ERD](https://lucid.app/lucidchart/bc5e2012-3ac7-43dc-b379-d251b8f4d81a/edit?invitationId=inv_79189c3b-26d9-4648-ab77-4fdf7faad281&referringApp=slack&page=0_0#)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Team Members
 
-### Making a Progressive Web App
+[Vivek Patel](https://github.com/vivek1999patel)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[Vivek Rana](https://github.com/vivekrana0)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Wasim Okadia](https://github.com/Wasimoak)
