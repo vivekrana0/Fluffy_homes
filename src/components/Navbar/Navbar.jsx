@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./Navbar.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { FcHome } from 'react-icons/fc';
 
 // NavbarComponent
 export default function NavbarComponent({ user, setUser }) {
@@ -11,18 +12,13 @@ export default function NavbarComponent({ user, setUser }) {
     setUser(null);
   }
   return (
-    <Navbar key={false} expand={false} className="mb-3">
+    <Navbar key={false} expand={false} className="mb-3" bg="light" variant="light">
       <Container fluid>
         <Navbar.Brand href="/">
-          <img
-            src="https://i.imgur.com/fXygila.png"
-            width="80"
-            height="80"
-            className="d-inline-block align-top"
-          />
+          <FcHome size={70} />
         </Navbar.Brand>
         <Navbar.Brand id="brand" href="/">
-          Rental Bravo
+          RENTAL BRAVO
         </Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
         <Navbar.Offcanvas
@@ -32,7 +28,7 @@ export default function NavbarComponent({ user, setUser }) {
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
-              Rental Bravo
+             RENTAL BRAVO
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>

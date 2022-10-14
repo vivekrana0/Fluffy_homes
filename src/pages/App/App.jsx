@@ -10,6 +10,7 @@ import Footer from "../../components/Footer/Footer";
 import Detail from "../Detail/Detail";
 import Favorite from "../Favorites/Favorites";
 import MyListingComponent from "../MyListing/MyListing";
+import FooterComponent from "../../components/Footer/Footer";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ export default function App() {
   }, []);
 
   return (
+    <>
     <main className="App">
       <Routes>
         <Route path="" element={<Home user={user} setUser={setUser} />} />
@@ -49,7 +51,8 @@ export default function App() {
           element={<Favorite user={user} setUser={setUser} />}
         />
       </Routes>
-      <Footer />
     </main>
+    <FooterComponent />
+    </>
   );
 }
