@@ -1,12 +1,13 @@
 import NavbarComponent from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
-import { useEffect, useState } from "react"
-import AllListingComponent from "../../components/AllListing/AllListing";
+import { useEffect, useState } from "react";
+import FavoriteListings from "../../components/FavoritesListing/Favorites";
+import { Navigate } from "react-router-dom";
 
-export default function Favorite() {
+export default function Favorite({ user, setUser }) {
+  const [properties, setProperties] = useState([]);
 
-    const [properties, setProperties] = useState([])
 
     useEffect(()=>{
         async function fetchData(){
@@ -20,19 +21,29 @@ export default function Favorite() {
             const fav = await result.json()
             setProperties(fav)
             
+            
         } catch(err) {
             console.log("Error: ", err)
         }
+
     }
-    fetchData()
-    }, [])
+    fetchData();
+  }, []);
 
 
+    
+    if(!user){
+        return <Navigate to='/user/register' />
+    }
     return (
         <>
-            <NavbarComponent/>
-            <AllListingComponent properties={properties} setProperties={setProperties}/>
+     
+            <NavbarComponent user={user} setUser={setUser}/>
+            <FavoriteListings properties={properties} setProperties={setProperties}/>
             <Footer/>
+
+        
         </>
     )
 }
+

@@ -1,18 +1,12 @@
-import { useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import DropdownComponent from "../DropDown/DropDown";
+import { Col, Row } from "react-bootstrap";
 import ListingCardComponent from "../ListingCard/ListingCard";
 
-// AllListingComponent to display all listings on home page with favorite button
-export default function AllListingComponent({ properties, setProperties }) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  // handleClick() is used to add listings to favorite list
+// FavoriteListings() to add listing in favorite
+export default function FavoriteListings({ properties, setProperties }) {
   async function handleClick(property, index) {
     console.log([...properties], index);
     let jwt = localStorage.getItem("token");
+
     const options = {
       method: "POST",
       headers: {
@@ -33,17 +27,16 @@ export default function AllListingComponent({ properties, setProperties }) {
       setProperties(original);
     }
   }
-
-  // Display home page
+  
   return (
-    <div>
-      <DropdownComponent />
+    <>
       {properties.length ? (
         <div
           style={{
             width: "100%",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
+            alignItems: "center",
           }}
         >
           <Row style={{ width: "100%", marginLeft: 10 }}>
@@ -52,19 +45,16 @@ export default function AllListingComponent({ properties, setProperties }) {
                 <ListingCardComponent
                   handleClick={handleClick}
                   index={index}
-                  handleShow={handleShow}
                   property={property}
                   setProperties={setProperties}
-                  handleClose={handleClose}
-                  show={show}
                 />
               </Col>
             ))}
           </Row>
         </div>
       ) : (
-        <h4>Loading...</h4>
+        <h4>No favorite listings</h4>
       )}
-    </div>
+    </>
   );
 }

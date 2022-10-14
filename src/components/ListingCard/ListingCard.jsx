@@ -1,8 +1,8 @@
-// import { Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-// import DetailComponent from "../Detail/Detail";
 import "./ListingCard.css";
+
+// ListingCardComponent
 export default function ListingCardComponent({
   handleClick,
   handleDetails,
@@ -13,14 +13,11 @@ export default function ListingCardComponent({
   console.log('[property]', property)
   return (
     <div className="container">
-      {/* <Container className='p-4'>
-        <Row className='row-cols-1 row-cols-md-3 g-4'> */}
       <Card
         style={{ height: "30rem", width: "18rem" }}
         //onClick={() => handleDetails(property)}
         className="box"
       >
-        {/* <a href="/user/listingdetail"> */}
         <Link to={`/user/listingdetail/${property._id}`} params={property._id}>
           <Card.Img variant="top" src={property.image[0]} height="255px" />
           <Card.Body>
@@ -33,7 +30,6 @@ export default function ListingCardComponent({
             </Card.Text>
           </Card.Body>
         </Link>
-        {/* </a> */}
         <button
           type="button"
           class="btn btn-default btn-lg"
@@ -55,7 +51,6 @@ export default function ListingCardComponent({
           </svg>
         </button>
       </Card>
- 
     </div>
   );
 }
