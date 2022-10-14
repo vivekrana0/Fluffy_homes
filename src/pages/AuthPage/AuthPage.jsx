@@ -8,6 +8,7 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 export default function Authpage({ setUser }) {
   const [showLogin, setShowLogin] = useState(true);
 
+
   return (
     <div>
       <NavbarComponent />

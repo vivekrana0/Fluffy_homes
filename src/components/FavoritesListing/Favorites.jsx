@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import DropdownComponent from "../DropDown/DropDown";
 import ListingCardComponent from "../ListingCard/ListingCard";
 
 // FavoriteListings() to add listing in favorite
