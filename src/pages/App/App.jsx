@@ -11,6 +11,7 @@ import Footer from "../../components/Footer/Footer";
 import Detail from "../Detail/Detail";
 import Favorite from "../Favorites/Favorites";
 import MyListingComponent from "../MyListing/MyListing";
+import FooterComponent from "../../components/Footer/Footer";
 
 
 export default function App() {

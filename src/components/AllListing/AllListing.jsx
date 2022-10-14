@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import DropdownComponent from "../DropDown/DropDown";
 import ListingCardComponent from "../ListingCard/ListingCard";
 
@@ -43,12 +43,15 @@ export default function AllListingComponent({ properties, setProperties }) {
           style={{
             width: "100%",
             display: "flex",
-            justifyContent: "space-between",
+            flexWrap: "wrap",
+            justifyContent: "space-around",
+            alignItems: "center"
           }}
         >
-          <Row style={{ width: "100%", marginLeft: 10 }}>
+          {/* <Container className="my-auto"> */}
+          <Row style={{ width: "100%", marginLeft: 8 }}>
             {properties.map((property, index) => (
-              <Col md={3} style={{ marginTop: 10 }}>
+              <Col md="auto" style={{ marginTop: 5 }}>
                 <ListingCardComponent
                   handleClick={handleClick}
                   index={index}
@@ -61,6 +64,7 @@ export default function AllListingComponent({ properties, setProperties }) {
               </Col>
             ))}
           </Row>
+          {/* </Container> */}
         </div>
       ) : (
         <h4>Loading...</h4>

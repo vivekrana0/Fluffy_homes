@@ -24,7 +24,6 @@ export default function DeleteListingCardComponent({
               </Card.Text>
             </Card.Body>
           </Link>
-          <div>
             <Button
               variant="outline-danger"
               size="lg"
@@ -32,10 +31,9 @@ export default function DeleteListingCardComponent({
             >
               Delete
             </Button>
-            <Button variant="outline-warning" size="lg">
+            {/* <Button variant="outline-warning" size="lg">
               Update
-            </Button>
-          </div>
+            </Button> */}
         </Card>
       </div>
     </>

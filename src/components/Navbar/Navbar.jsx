@@ -1,3 +1,4 @@
+import { FcHome } from 'react-icons/fc';
 
 // import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -18,12 +19,7 @@ export default function NavbarComponent({user, setUser}) {
         <Navbar key={false}  expand={false} className="mb-3">
           <Container fluid>
           <Link to="/">
-            <img
-              src="https://i.imgur.com/fXygila.png"
-              width="80"
-              height="80"
-              className="d-inline-block align-top"
-            />
+          <FcHome size={70} />
           </Link>
             <Link id='brand' to="/">Rental Bravo</Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
@@ -46,8 +42,8 @@ export default function NavbarComponent({user, setUser}) {
                 {/* <Nav.Link href="/user/favorites">Favorites</Nav.Link> */}
                 <Link className='link' to="/user/favorites">Favorites</Link>
                 <Link to="/user/addlisting">List A Rental</Link>
-                <Link to="/user/updatelisting">Update Rental</Link>
-                <Link to="/user/listingdetail">Detail</Link>
+                {/* <Link to="/user/updatelisting">Update Rental</Link>
+                <Link to="/user/listingdetail">Detail</Link> */}
                 {user ? 
                 <Link to="" onClick={handleLogout}>Log Out</Link>
                 :
