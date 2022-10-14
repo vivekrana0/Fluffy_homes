@@ -46,7 +46,6 @@ export default function SignUpForm({ setUser }) {
   const disable =
     credentials.password !== credentials.confirm ? "disabled" : "";
 
-  console.log(disable);
 
   return (
     <div className="wrapper">

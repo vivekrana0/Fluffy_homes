@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 
+
 import "./Detail.css";
 import { CarouselItem } from "react-bootstrap";
 
@@ -96,6 +97,7 @@ export default function DetailComponent({ property }) {
         <ul>Parking: {singleProperty?.parking}</ul>
         <br></br>
       </div>
+
     </div>
   );
 }

@@ -44,7 +44,6 @@ async function index(req, res) {
     });
     res.status(200).json(properties);
   } catch (error) {
-    console.log("Inside index() > catch Block");
     res.status(400).json(error);
   }
 }
@@ -55,7 +54,6 @@ async function create(req, res) {
     const obj = req.body;
     obj.image = [];
     files = req.files;
-    console.log("herrrrrrrrr", bucketRegion)
     const parmas = files.map((file) => {
       const imageName = randomImageName();
       const fileExtension = file.originalname.split(".")[1];
@@ -83,25 +81,17 @@ async function create(req, res) {
 
 // Delete Listing
 function deleteListing(req, res) {
-    console.log("User ID: ", req.user._id);
-    console.log("Property Address: ", req.body.address);
     User.findById(req.user._id, function (err, user) {
       if (err) return "bad request";
       let idx = -1;
       user.listProperty.forEach(function (fav, index) {
         if (fav.address === req.body.address) {
           idx = index;
-          console.log("Index of property in listProeprty: ", idx);
         }
       });
       if (idx >= 0) {
-        console.log(
-          "List of property before removing ",
-          user.listProperty.length
-        );
         user.listProperty.splice(idx, 1);
         user.save();
-        console.log("List of property after removing ", user.listProperty.length);
         res.status(200).json("remove");
       } else {
         res.status(400).json("not removed");
@@ -111,7 +101,6 @@ function deleteListing(req, res) {
 
 // Search for the listing based on city name
 async function search(req, res) {
-  console.log(req.body.searchQuery);
   const query = req.body.searchQuery.toLowerCase().replace(/\s/g, "");
   let properties = [];
   let users = await User.find({});
@@ -165,7 +154,6 @@ function myListing(req, res) {
   User.findById(req.user._id, function (err, user) {
     if (err) return "Bad Request";
     let property = user.listProperty;
-    console.log(property);
     res.status(200).json(property);
   });
 }
