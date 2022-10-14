@@ -75,7 +75,7 @@ export default function AddListingComponent() {
         <h3>Add Rental Listing</h3>
       </div>
       <div class="col-xs-1" align="center">
-        <Form onSubmit={handleSubmit} style={{marginRight:"15rem", marginLeft:"15rem"}}>
+        <Form onSubmit={handleSubmit} style={{marginRight:"15rem", marginLeft:"15rem", marginBottom: "10rem"}}>
           <Form.Group className="mb-3">
             <Form.Label column="lg" lg={2}>
               Street Address
