@@ -52,7 +52,7 @@ export default function AllListingComponent({ properties, setProperties }) {
           }}
         >
           {/* <Container className="my-auto"> */}
-          <Row style={{ width: "100%", marginLeft: 8 }}>
+          <Row style={{ width: "100%", marginLeft: 70, marginBottom: 80 }}>
             {properties.map((property, index) => (
               <Col md="auto" style={{ marginTop: 5 }}>
                 <ListingCardComponent

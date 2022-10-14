@@ -3,7 +3,6 @@
     color: black;
     font-size: 20px;
     text-align: center;
-    margin-top: auto;
-    /* margin: 0;
-    padding-top: 15px; */
+    position: fixed;
+    bottom: 0;
 }

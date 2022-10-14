@@ -14,7 +14,7 @@ export default function ListingCardComponent({
   return (
     <div className="container">
       <Card
-        style={{ height: "32rem", width: "17rem" }}
+        style={{ height: "30rem", width: "17rem" }}
         className="box"
       >
         <Link to="/user/listingdetail" state={property._id} >
@@ -33,6 +33,7 @@ export default function ListingCardComponent({
           type="button"
           class="btn btn-default btn-lg"
           onClick={() => handleClick(property, index)}
+          style={{position: "absolute", bottom: "0", right: "3rem", left: "3rem"}}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

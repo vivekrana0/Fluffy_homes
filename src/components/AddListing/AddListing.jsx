@@ -72,7 +72,7 @@ export default function AddListingComponent() {
   return (
     <div className="AddForm">
       <div class="d-flex justify-content-center">
-        <h1>Add Rental Listing</h1>
+        <h3>Add Rental Listing</h3>
       </div>
       <div class="col-xs-1" align="center">
         <Form onSubmit={handleSubmit} style={{marginRight:"15rem", marginLeft:"15rem"}}>
