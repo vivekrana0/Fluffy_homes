@@ -57,16 +57,26 @@ export default function MyListingComponent({ user, setUser }) {
   return (
     <>
       <NavbarComponent user={user} setUser={setUser} />
-      <Row style={{ width: "100%", marginLeft: 10 }}>
-      {properties.map((property) => (
-        <Col md={3} style={{ marginTop: 10 }}>
-        <DeleteListingCardComponent
-          property={property}
-          handleDeleteListing={handleDeleteListing}
-        />
-        </Col>
-      ))}
-      </Row>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <Row style={{ width: "100%", marginLeft: 10 }}>
+          {properties.map((property) => (
+            <Col md="auto" style={{ marginTop: 5 }}>
+              <DeleteListingCardComponent
+                property={property}
+                handleDeleteListing={handleDeleteListing}
+              />
+            </Col>
+          ))}
+        </Row>
+      </div>
     </>
   );
 }

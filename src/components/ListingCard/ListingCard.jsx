@@ -14,12 +14,11 @@ export default function ListingCardComponent({
   return (
     <div className="container">
       <Card
-        style={{ height: "30rem", width: "18rem" }}
-        //onClick={() => handleDetails(property)}
+        style={{ height: "28rem", width: "17rem" }}
+        onClick={handleShow}
         className="box"
       >
-        <Link to={`/user/listingdetail/${property._id}`} params={property._id}>
-          <Card.Img variant="top" src={property.image[0]} height="255px" />
+          <Card.Img variant="top" src={property.image[0]} height="240px" />
           <Card.Body>
             <Card.Title>{property.address}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">
@@ -29,7 +28,6 @@ export default function ListingCardComponent({
               Bedroom {property.bedrooms} Bathroom {property.bathrooms}
             </Card.Text>
           </Card.Body>
-        </Link>
         <button
           type="button"
           class="btn btn-default btn-lg"

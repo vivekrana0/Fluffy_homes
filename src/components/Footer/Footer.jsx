@@ -1,8 +1,10 @@
-const Footer = () => (
+import './Footer.css'
+import { FcHome } from 'react-icons/fc';
+
+export default function FooterComponent() {
+  return (
     <div className="footer">
-      <p><img src="https://i.imgur.com/fXygila.png" alt="footer" width='30px'></img>Rental Bravo Copyright © Search Engine Bandits 2022</p>
+      <p><FcHome size={30}/>Rental Bravo Copyright © Search Engine Bandits 2022</p>
     </div>
-  );
-  
-export default Footer;
-  
+  )
+}
