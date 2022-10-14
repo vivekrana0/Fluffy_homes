@@ -37,7 +37,7 @@ export default function DetailComponent({ id }) {
   return (
     <div className="DetailCard">
       <div class="d-flex justify-content-center">
-        <h1>Detail Page</h1>
+        <h3>Detail Page</h3>
       </div>
       <br></br>
       <Carousel >

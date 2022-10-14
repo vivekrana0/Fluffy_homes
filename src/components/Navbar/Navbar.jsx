@@ -21,7 +21,7 @@ export default function NavbarComponent({user, setUser}) {
           <Link to="/">
           <FcHome size={70} />
           </Link>
-            <Link id='brand' to="/">Rental Bravo</Link>
+            <Link id='brand' to="/">RENTAL BRAVO</Link>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${false}`}
@@ -30,7 +30,7 @@ export default function NavbarComponent({user, setUser}) {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
-                  Rental Bravo
+                  RENTAL BRAVO
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>

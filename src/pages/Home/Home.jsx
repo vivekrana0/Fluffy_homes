@@ -60,7 +60,7 @@ export default function Home({ user, setUser }) {
     <div>
       <NavbarComponent user={user} setUser={setUser} />
       <br></br>
-      <Form className="d-flex" onSubmit={handleSubmit} style={{margin: "2rem"}}>
+      <Form className="d-flex" onSubmit={handleSubmit} style={{margin: "3rem"}}>
         <Form.Control
           type="search"
           placeholder="Search By City"

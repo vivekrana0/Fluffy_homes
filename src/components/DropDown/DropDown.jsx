@@ -4,7 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 export default function DropdownComponent() {
   return (
     <>
-      <Dropdown style={{ width: "100%", marginTop: 10, marginLeft: 30 }}>
+      <Dropdown style={{ width: "100%", marginTop: 10, marginLeft: "3rem" }}>
         <Dropdown.Toggle variant="dark" id="dropdown-basic">
           Sort By
         </Dropdown.Toggle>

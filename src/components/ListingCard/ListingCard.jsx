@@ -14,7 +14,7 @@ export default function ListingCardComponent({
   return (
     <div className="container">
       <Card
-        style={{ height: "28rem", width: "17rem" }}
+        style={{ height: "32rem", width: "17rem" }}
         className="box"
       >
         <Link to="/user/listingdetail" state={property._id} >
@@ -40,7 +40,7 @@ export default function ListingCardComponent({
             height="40"
             fill="currentColor"
             class="bi bi-bookmark-heart"
-            viewBox="0 0 16 16"
+            viewBox="0 0 15 15"
           >
             <path
               fill-rule="evenodd"
