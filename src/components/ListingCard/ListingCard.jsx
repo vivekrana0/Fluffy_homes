@@ -1,5 +1,5 @@
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./ListingCard.css";
 
 // ListingCardComponent
@@ -15,9 +15,9 @@ export default function ListingCardComponent({
     <div className="container">
       <Card
         style={{ height: "28rem", width: "17rem" }}
-        onClick={handleShow}
         className="box"
       >
+        <Link to="/user/listingdetail" state={property._id} >
           <Card.Img variant="top" src={property.image[0]} height="240px" />
           <Card.Body>
             <Card.Title>{property.address}</Card.Title>
@@ -28,6 +28,7 @@ export default function ListingCardComponent({
               Bedroom {property.bedrooms} Bathroom {property.bathrooms}
             </Card.Text>
           </Card.Body>
+          </Link>
         <button
           type="button"
           class="btn btn-default btn-lg"
