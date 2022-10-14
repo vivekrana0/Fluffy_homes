@@ -5,21 +5,23 @@ import { Link } from "react-router-dom";
 import "./ListingCard.css";
 export default function ListingCardComponent({
   handleClick,
+  handleDetails,
   handleShow,
   property,
   index,
 }) {
+  console.log('[property]', property)
   return (
     <div className="container">
       {/* <Container className='p-4'>
         <Row className='row-cols-1 row-cols-md-3 g-4'> */}
       <Card
         style={{ height: "30rem", width: "18rem" }}
-        onClick={handleShow}
+        //onClick={() => handleDetails(property)}
         className="box"
       >
         {/* <a href="/user/listingdetail"> */}
-        <Link href="/user/listingdetail" params={property._id}>
+        <Link to={`/user/listingdetail/${property._id}`} params={property._id}>
           <Card.Img variant="top" src={property.image[0]} height="255px" />
           <Card.Body>
             <Card.Title>{property.address}</Card.Title>
@@ -53,9 +55,7 @@ export default function ListingCardComponent({
           </svg>
         </button>
       </Card>
-      {/* <DetailComponent property={property}/> */}
-      {/* </Row>
-      </Container> */}
+ 
     </div>
   );
 }

@@ -125,7 +125,7 @@ export default function AddListingComponent() {
         <Col>
           <Form.Group className="mb-3">
             <Form.Label column="lg" lg={2}>Utilities Included?</Form.Label>
-            <Form.Select name='utility' onChange={handleChange} size="lg" aria-label="Default select example">
+            <Form.Select name='utility' value={propertyData.utility} type='boolean' onChange={handleChange} size="lg" aria-label="Default select example">
               <option>Yes or No?</option>
               <option  value={true}>Yes</option>
               <option  value={false}>No</option>
@@ -135,7 +135,7 @@ export default function AddListingComponent() {
         <Col>
           <Form.Group className="mb-3">
             <Form.Label column="lg" lg={2}>Fully Furnished?</Form.Label>
-            <Form.Select name='furnish'  onChange={handleChange} size="lg" aria-label="Default select example">
+            <Form.Select name='furnish' value={propertyData.furnish} onChange={handleChange} size="lg" aria-label="Default select example">
               <option>Yes or No?</option>
               <option value={true} >Yes</option>
               <option  value={false} >No</option>

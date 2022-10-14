@@ -36,7 +36,7 @@ export default function App () {
           <Route path='/user/addlisting' element={<AddListing user={user} setUser={setUser}/>} />
           <Route path='/user/updatelisting' element={<UpdateListing />} />
           <Route path='/user/mylisting' element={<MyListingComponent user={user} setUser={setUser}/>} />
-          <Route path='/user/listingdetail' element={<Detail />} />
+          <Route path='/user/listingdetail/:id' element={<Detail />} />
           <Route path='/user/favorites' element={<Favorite />} />
         </Routes>
         <Footer />
