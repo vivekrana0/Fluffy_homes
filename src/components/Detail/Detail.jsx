@@ -1,22 +1,17 @@
-// import { Form } from "react-bootstrap";
-import Image from "react-bootstrap/Image";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-
-
 import "./Detail.css";
-import { CarouselItem } from "react-bootstrap";
 
-export default function DetailComponent({ property }) {
-  console.log("property", property);
+
+export default function DetailComponent({ id }) {
+
+  
 
   const [properties, setProperties] = useState([]);
 
   const [singleProperty, setSingleProperty] = useState({});
 
-  const params = useParams();
-  console.log("[THE PARAMS]", params.id);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +20,7 @@ export default function DetailComponent({ property }) {
         let propertiesObjects = await propertyData.json();
 
         const theSingleProperty = propertiesObjects.filter((spec) => {
-          return spec._id === params.id;
+          return spec._id === id;
         });
         setSingleProperty(theSingleProperty[0]);
         console.log(theSingleProperty[0].image);
@@ -37,6 +32,7 @@ export default function DetailComponent({ property }) {
 
     fetchData().catch(console.error);
   }, []);
+
 
   return (
     <div className="DetailCard">
