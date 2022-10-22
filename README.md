@@ -49,33 +49,6 @@ Rental Bravo allows its users to upload and delete their own posts, while also a
   </tr>
  </table>
 
-
-## Code Examples
-
-
-- The code snippet below is used to serach for specific listings based on the location input by the user. 
-
-```javascript
-async function search(req, res) {
-  console.log(req.body.searchQuery);
-  const query = req.body.searchQuery.toLowerCase().replace(/\s/g, "");
-  let properties = [];
-  let users = await User.find({});
-  users.forEach((user) => {
-    user.listProperty.forEach((property) => {
-      const city = property.address
-        .split(",")[1]
-        .toLowerCase()
-        .replace(/\s/g, "");
-      if (city === query) {
-        properties.push(property);
-      }
-    });
-  });
-  res.status(200).json(properties);
-}
-```
-
 ## Future enhancements
 
 1. Add a messaging box to or email service to reach out to the property owner directly.
