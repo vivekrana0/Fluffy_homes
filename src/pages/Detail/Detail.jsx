@@ -3,14 +3,14 @@ import NavbarComponent from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { useLocation } from "react-router-dom";
 
-export default function ListingDetail() {
+export default function ListingDetail({user}) {
   const location = useLocation()
   const id = location.state
 
 
   return (
     <div className="DetailPage">
-      <NavbarComponent />
+      <NavbarComponent user={user}/>
       <ListingDetailComponent id={id}/>
       <Footer/>
     </div>

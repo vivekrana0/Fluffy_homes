@@ -44,7 +44,7 @@ export default function App() {
             <Route path='/user/favorites' element={<Favorite user={user} setUser={setUser} />} />
             <Route path='' element={<Home user={user} setUser={setUser} />} />
             <Route path='/user/register' element={<Authpage setUser={setUser} />} />
-            <Route path='/user/listingdetail/' element={<Detail />} />
+            <Route path='/user/listingdetail/' element={<Detail user={user}/>} />
             <Route path='*' element={<h1>Not Found</h1>} />
         </Routes>
       
