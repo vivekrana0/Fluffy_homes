@@ -45,7 +45,7 @@ export default function LoginForm(props) {
     <div className="wrapper">
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
+          <label>Email (demo@gmail.com)</label>
           <input
             type="email"
             name="email"
@@ -54,7 +54,7 @@ export default function LoginForm(props) {
             onChange={handleChange}
             required
           />
-          <label>Password</label>
+          <label>Password (Demo)</label>
           <input
             type="password"
             name="password"
